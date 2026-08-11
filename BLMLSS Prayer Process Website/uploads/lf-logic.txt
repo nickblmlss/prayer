@@ -1,0 +1,227 @@
+
+const KEY = 'blmlss-living-free-v1';
+
+class Component extends DCLogic {
+  state = { units: null, answers: {}, done: {}, view: 'home', unitId: null, mapOpen: false, saved: '' };
+
+  componentDidMount() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const d = JSON.parse(raw);
+        this.setState({ answers: d.answers || {}, done: d.done || {}, unitId: d.unitId || null });
+      }
+    } catch (e) {}
+    const load = () => {
+      const c = window.LIVING_FREE_CONTENT;
+      if (c) this.setState({ units: c.units });
+      else this._t = setTimeout(load, 30);
+    };
+    load();
+  }
+
+  persist(patch) {
+    const next = { answers: this.state.answers, done: this.state.done, unitId: this.state.unitId, ...patch };
+    try { localStorage.setItem(KEY, JSON.stringify({ answers: next.answers, done: next.done, unitId: next.unitId })); } catch (e) {}
+  }
+
+  write(id, val) {
+    const answers = { ...this.state.answers, [id]: val };
+    this.setState({ answers, saved: 'Saved' });
+    this.persist({ answers });
+  }
+
+  units() { return this.state.units || []; }
+
+  idx(id) { return this.units().findIndex(u => u.id === id); }
+
+  unlockedThrough() {
+    const us = this.units();
+    let i = 0;
+    while (i < us.length && this.state.done[us[i].id]) i++;
+    return i;
+  }
+
+  open(id) {
+    this.setState({ view: 'unit', unitId: id, mapOpen: false, saved: '' });
+    this.persist({ unitId: id });
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  }
+
+  completedDays() {
+    return this.units().reduce((n, u) => n + (this.state.done[u.id] ? (u.dayCount || 0) : 0), 0);
+  }
+
+  prep(list, depth) {
+    return (list || []).map(b => {
+      const o = { ...b, gap: '26px' };
+      if (b.t === 'p') { o.isP = true; o.html = { __html: b.x }; }
+      else if (b.t === 'h') { o.isH = true; o.gap = '18px'; }
+      else if (b.t === 'ul' || b.t === 'ol') {
+        o[b.t === 'ul' ? 'isUL' : 'isOL'] = true;
+        o.items = (b.items || []).map(x => ({ html: { __html: x } }));
+      }
+      else if (b.t === 's') { o.isS = true; o.gap = '30px'; }
+      else if (b.t === 'ex') { o.isEX = true; o.html = { __html: b.x }; }
+      else if (b.t === 'w') {
+        o.isW = true;
+        o.gap = '28px';
+        o.value = this.state.answers[b.id] || '';
+        o.onChange = e => this.write(b.id, e.target.value);
+        o.hint = b.hint || '';
+      }
+      else if (b.t === 'panel') {
+        o.isPanel = true;
+        o.gap = '36px';
+        o.blocks = this.prep(b.blocks, (depth || 0) + 1);
+        const tones = {
+          battleplan: ['var(--sand)', '0'],
+          journal: ['var(--white)', '1px solid var(--ink-15)'],
+          prayer: ['var(--blush)', '0'],
+          checkpoint: ['var(--mint)', '0'],
+          preview: ['var(--white)', '1px solid var(--ink-15)'],
+          focus: ['var(--peach)', '0']
+        };
+        const t = tones[b.kind] || tones.journal;
+        o.bg = t[0];
+        o.border = t[1];
+      }
+      return o;
+    });
+  }
+
+  planText() {
+    const lines = ['LIVING FREE — MY PERSONAL BATTLE PLAN', ''];
+    this.units().forEach(u => {
+      const fs = this.planFields(u);
+      if (!fs.length) return;
+      lines.push('— ' + (u.eyebrow ? u.eyebrow + ' · ' : '') + u.title, '');
+      fs.forEach(f => { lines.push(f.label, (this.state.answers[f.id] || '').trim() || '(not written yet)', ''); });
+    });
+    return lines.join('\n');
+  }
+
+  planFields(u) {
+    const out = [];
+    const walk = list => (list || []).forEach(b => {
+      if (b.t === 'panel') walk(b.blocks);
+      else if (b.t === 'w' && b.plan) out.push(b);
+    });
+    walk(u.blocks);
+    return out;
+  }
+
+  renderVals() {
+    const us = this.units();
+    const unlocked = this.unlockedThrough();
+    const sequential = this.props.requireSequence !== false;
+    const days = this.completedDays();
+    const cur = us.find(u => u.id === this.state.unitId) || null;
+    const curIdx = cur ? this.idx(cur.id) : -1;
+
+    const dayDone = {};
+    us.forEach(u => { if (this.state.done[u.id] && (u.dayCount || 0) > 0) (u.days || []).forEach(d => { dayDone[d] = true; }); });
+    const currentDays = cur && (cur.dayCount || 0) > 0 ? (cur.days || []) : [];
+
+    const dayCells = Array.from({ length: 30 }, (_, i) => {
+      const n = i + 1;
+      const isDone = !!dayDone[n];
+      const isCur = currentDays.indexOf(n) !== -1;
+      return {
+        n,
+        title: 'Day ' + n,
+        bg: isDone ? 'var(--apricot)' : isCur ? 'var(--peach)' : 'transparent',
+        border: isCur ? 'var(--ink)' : isDone ? 'transparent' : 'var(--ink-15)',
+        fg: 'var(--ink)'
+      };
+    });
+
+    const mapRows = us.map((u, i) => {
+      const locked = sequential && i > unlocked;
+      return {
+        eyebrow: u.eyebrow || '',
+        title: u.title,
+        status: this.state.done[u.id] ? 'Complete' : locked ? 'Locked' : i === unlocked ? 'Next' : 'Open',
+        locked,
+        cursor: locked ? 'default' : 'pointer',
+        opacity: locked ? 0.4 : 1,
+        bg: cur && cur.id === u.id ? 'var(--white)' : 'transparent',
+        onClick: locked ? () => {} : () => this.open(u.id)
+      };
+    });
+
+    const sectionSummary = us.filter(u => u.kind === 'opener' || u.kind === 'final').map(u => ({
+      numeral: u.numeral || '',
+      title: u.title,
+      subtitle: u.subtitle || '',
+      days: u.kind === 'final' ? 'Ongoing' : (u.eyebrow || '')
+    }));
+
+    const planGroups = us.map(u => {
+      const fs = this.planFields(u).map(f => ({
+        planId: 'plan-' + f.id,
+        label: f.label,
+        value: this.state.answers[f.id] || '',
+        onChange: e => this.write(f.id, e.target.value)
+      }));
+      return { eyebrow: u.eyebrow || '', title: u.title, fields: fs };
+    }).filter(g => g.fields.length);
+
+    const nextUnit = curIdx >= 0 && curIdx + 1 < us.length ? us[curIdx + 1] : null;
+
+    return {
+      isHome: this.state.view === 'home',
+      isUnit: this.state.view === 'unit' && !!cur,
+      isPlan: this.state.view === 'plan',
+      mapOpen: this.state.mapOpen && us.length > 0,
+      progressLabel: days + ' of 30 days',
+      progressWidth: Math.round((days / 30) * 100) + '%',
+      prayerUrl: this.props.prayerUrl || 'https://blmlss.com/prayer',
+      ctaLabel: Object.keys(this.state.done).length ? 'Continue where I left off' : 'Begin day one',
+      dayCells: this.props.showDayMap === false ? [] : dayCells,
+      mapRows,
+      sectionSummary,
+      planGroups,
+      unitEyebrow: cur ? (cur.eyebrow || '') : '',
+      unitNumeral: cur ? (cur.numeral || '') : '',
+      unitTitle: cur ? cur.title : '',
+      unitSubtitle: cur ? (cur.subtitle || '') : '',
+      blocks: cur ? this.prep(cur.blocks, 0) : [],
+      completeLabel: cur && nextUnit ? (this.state.done[cur.id] ? 'Continue' : 'Mark complete & continue') : 'Finish',
+      savedNote: this.state.saved,
+      goHome: () => this.setState({ view: 'home', mapOpen: false }),
+      goPlan: () => { this.setState({ view: 'plan', mapOpen: false }); if (typeof window !== 'undefined') window.scrollTo(0, 0); },
+      toggleMap: () => this.setState({ mapOpen: !this.state.mapOpen }),
+      resume: () => {
+        const target = us.find(u => !this.state.done[u.id]) || us[us.length - 1];
+        if (target) this.open(target.id);
+      },
+      prev: () => {
+        if (curIdx > 0) this.open(us[curIdx - 1].id);
+        else this.setState({ view: 'home' });
+      },
+      complete: () => {
+        if (!cur) return;
+        const done = { ...this.state.done, [cur.id]: true };
+        this.setState({ done });
+        this.persist({ done });
+        if (nextUnit) this.open(nextUnit.id);
+        else { this.setState({ view: 'plan' }); if (typeof window !== 'undefined') window.scrollTo(0, 0); }
+      },
+      printPlan: () => { if (typeof window !== 'undefined') window.print(); },
+      downloadPlan: () => {
+        const blob = new Blob([this.planText()], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'my-battle-plan.txt';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      },
+      resetAll: () => {
+        if (typeof window !== 'undefined' && !window.confirm('Clear everything you have written and start over?')) return;
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        this.setState({ answers: {}, done: {}, view: 'home', unitId: null, mapOpen: false });
+      }
+    };
+  }
+}
