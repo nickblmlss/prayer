@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/styles.css">
   <script src="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/_ds_bundle.js"></script>
   <script src="fundraiseup.js"></script>
+  <script src="reveal.js"></script>
   <style>
     @font-face{font-family:'Restora';src:url('assets/fonts/RestoraLight.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap;}
     @font-face{font-family:'Restora';src:url('assets/fonts/Restora.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap;}
@@ -77,18 +78,21 @@
     
 
     <section style="max-width:1240px;margin:0 auto;padding:96px 32px 0">
-      <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:40px">A WORD FROM OUR FOUNDER</div>
-      <p style="font-family: var(--font-display),'Prata',Georgia,serif; font-weight: 400; font-size: clamp(28px,3.6vw,48px); line-height: 1.22; letter-spacing: -.01em; margin: 0; max-width: 22ch; text-wrap: pretty; width: 680px; height: 238px">"As a BLMLSS Team, we are expectant for how the Lord wants to use this process to help you look more and more like Him.</p>
-      <p style="font-size: 17px; line-height: 1.65; margin: 0; width: 548px; height: 139px">It's an honor to partner with Heaven to prepare the Bride of Christ for Jesus's return, and we hope and pray you draw closer to God as so many others have through this process!"<br><br>— NICK GRAVINO</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:1000px">
-        
-        
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:36px">
+        <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45)">A WORD FROM OUR FOUNDER</div><p style="font-family:Restora,var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:clamp(28px,3.2vw,44px);line-height:1.26;letter-spacing:-.01em;margin:0;max-width:40ch;text-wrap:pretty">"After over 3 years of watching the Lord move in people's lives, we are expectant that He will do the same for you—miracles, deliverance, and healing. We're here as an encouragement to you, and to help you get ready for the wedding feast to come.&nbsp;</p>
+        <p style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.55);margin:0">— Nick Gravino</p>
       </div>
-    </section><section style="max-width:1240px;margin:0 auto;padding:88px 32px 0">
-      <h2 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:clamp(28px,3.2vw,40px);line-height:1.18;margin:0 0 8px">Here's an overview of the three-step BLMLSS Prayer Process:</h2>
-      <hr style="border:0;border-top:1px solid rgba(30,27,22,.15);margin:40px 0 0">
+      <hr style="border:0;border-top:1px solid rgba(30,27,22,.15);margin:88px 0 0">
     </section>
 
+    
+
+    <section style="max-width:1240px;margin:0 auto;padding:56px 32px 0;display:flex;flex-direction:column;gap:32px">
+      <h2 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:clamp(28px,3.2vw,40px);line-height:1.18;margin:0">Here's an overview of the three-step BLMLSS Prayer Process:</h2>
+    </section>
+
+    <div style="position:relative">
+      <div style="{{ gateStyle }}">
     <section style="max-width:1240px;margin:0 auto;padding:56px 32px 0;display:flex;flex-direction:column;gap:32px">
 
       <article style="display:grid;grid-template-columns:180px 1fr;gap:48px;align-items:start;background:#FFFFFF;border:1px solid rgba(30,27,22,.15);border-radius:6px;padding:40px">
@@ -98,7 +102,7 @@
             <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45)">Step 1</span>
             <sc-if value="{{ s1Done }}"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:#D0EAE6;padding:5px 12px;border-radius:999px">Complete</span></sc-if>
           </div>
-          <h3 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:34px;line-height:1.18;margin:0 0 16px">Watch the intro video</h3>
+          <h3 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:34px;line-height:1.18;margin:0 0 16px">Watch the Intro Video</h3>
           <p style="font-size:17px;line-height:1.65;max-width:60ch;margin:0 0 28px">A short word from our President, Nick, before you begin outlining a high-level overview of our prayer process. If questions come up while you watch, email us and we will jump on a quick call before you dive in!</p>
           <div style="width:100%;aspect-ratio:16/9;background:#1E1B16;margin-bottom:28px;position:relative;overflow:hidden">
             <sc-if value="{{ videoIdle }}" hint-placeholder-val="{{ true }}">
@@ -277,9 +281,7 @@
           </sc-if>
         </div>
       </article>
-    </section>
-
-    <section style="background:#C8B8E4;margin-top:112px;padding:clamp(48px,7vw,96px) 32px">
+    </section><section style="background:#C8B8E4;margin-top:112px;padding:clamp(48px,7vw,96px) 32px">
       <figure style="max-width:1240px;margin:0 auto;text-align:center">
         <blockquote style="margin: 0 auto; font-family: var(--font-display),'Prata',Georgia,serif; font-weight: 400; font-size: clamp(24px,2.6vw,34px); line-height: 1.34; letter-spacing: -.01em; max-width: 34ch; text-wrap: pretty; width: 843px; height: 367px">“You are my friends if you do what I command you. No longer do I call you servants, for the servant does not know what his master is doing; but I have called you friends, for all that I have heard from my Father I have made known to you. You did not choose me, but I chose you and appointed you that you should go and bear fruit and that your fruit should abide, so that whatever you ask the Father in my name, he may give it to you. These things I command you, so that you will love one another.”</blockquote>
         <figcaption style="margin-top:32px;font-size:11px;letter-spacing:.18em;text-transform:uppercase">John 15:14—17</figcaption>
@@ -298,7 +300,23 @@
         <div style="background:rgba(30,27,22,.15);align-self:stretch"></div>
         <dc-import name="Reset Progress" description="Resetting clears every step you have marked complete, your workbook progress and all your quiz answers on this device." on-confirm="{{ resetAll }}" hint-size="100%,240px"></dc-import>
       </div><div style="max-width: 400px; width: 196px; height: 46px"><a href="#XUDNCNYQ" style="display: none"></a></div>
-    </section><dc-import name="Site Footer" hint-size="100%,520px"></dc-import>
+    </section>
+      </div>
+      <sc-if value="{{ locked }}">
+        <div style="position:absolute;inset:0;display:flex;justify-content:center;background:rgba(247,243,237,.5)">
+          <div style="position:sticky;top:96px;align-self:flex-start;margin-top:72px;width:min(460px,100%);background:#F7F3ED;border:1px solid rgba(30,27,22,.15);border-radius:6px;box-shadow:0 8px 28px rgba(30,27,22,.06);padding:40px">
+            <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:20px">Participants only</div>
+            <h2 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:30px;line-height:1.2;margin:0 0 16px">Enter your access word</h2>
+            <p style="font-size:16px;line-height:1.6;margin:0 0 28px;color:rgba(30,27,22,.7)">Your prayer lead gives you this word when your process begins.</p>
+            <input type="password" value="{{ gateInput }}" onChange="{{ setGate }}" onKeyDown="{{ gateKey }}" placeholder="Access word" autoComplete="off" style="width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:12px 14px;border:1px solid rgba(30,27,22,.35);border-radius:4px;background:#FFFFFF;color:#1E1B16;margin-bottom:16px">
+            <sc-if value="{{ gateError }}">
+              <p style="font-size:14px;line-height:1.5;margin:0 0 16px;color:#9B4B4B">That word is not right. Please check with your prayer lead.</p>
+            </sc-if>
+            <button type="button" onClick="{{ submitGate }}" style="appearance:none;cursor:pointer;font:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:14px 24px;border:1px solid #1E1B16;border-radius:4px;background:#1E1B16;color:#F7F3ED;white-space:nowrap;width:auto;max-width:none" style-hover="background:#332E26;border-color:#332E26">Unlock my process</button>
+          </div>
+        </div>
+      </sc-if>
+    </div><dc-import name="Site Footer" hint-size="100%,520px"></dc-import>
   </main>
   </sc-if>
 
@@ -628,13 +646,14 @@ const LEADS = [
 const BLANK = {intro:false, intake:false, lead:'nick@blmlss.com', chapters:[], quiz:false, renouncing:false, releasing:false, name:'', email:'', answers:{}, reflections:{}};
 
 class Component extends DCLogic {
-  state = {view:'home', p:Object.assign({}, BLANK), wrong:[], feedback:'', showFeedback:false, copied:false};
+  state = {view:'home', p:Object.assign({}, BLANK), wrong:[], feedback:'', showFeedback:false, copied:false, unlocked:false, gateInput:'', gateError:false};
 
   componentDidMount(){
     try {
       const raw = localStorage.getItem(KEY);
       if (raw) this.setState({p: Object.assign({}, BLANK, JSON.parse(raw))});
     } catch(e){}
+    try { if (localStorage.getItem('blmlss-gate-v1') === 'ok') this.setState({unlocked:true}); } catch(e){}
   }
 
   save(patch){
@@ -682,8 +701,26 @@ class Component extends DCLogic {
     return lines.join('\n');
   }
 
+  tryUnlock(){
+    if (this.state.gateInput.trim().toLowerCase() === 'fireofgod') {
+      this.setState({unlocked:true, gateError:false, gateInput:''});
+      try { localStorage.setItem('blmlss-gate-v1','ok'); } catch(e){}
+    } else {
+      this.setState({gateError:true});
+    }
+  }
+
   renderVals(){
     const p = this.state.p;
+    const gate = {
+      locked: !this.state.unlocked,
+      gateStyle: this.state.unlocked ? '' : 'filter:blur(7px);pointer-events:none;user-select:none',
+      gateInput: this.state.gateInput,
+      gateError: this.state.gateError,
+      setGate: (e) => this.setState({gateInput: e.target.value, gateError:false}),
+      gateKey: (e) => { if (e.key === 'Enter') this.tryUnlock(); },
+      submitGate: () => this.tryUnlock(),
+    };
     const readCount = p.chapters.length;
     const allRead = readCount >= CH.length;
     const s1 = p.intro;
@@ -734,7 +771,7 @@ class Component extends DCLogic {
       }
     }));
 
-    return {
+    return Object.assign({}, gate, {
       isHome: this.state.view === 'home',
       isWorkbook: this.state.view === 'workbook',
       isQuiz: this.state.view === 'quiz',
@@ -773,7 +810,7 @@ class Component extends DCLogic {
       s4Locked: !s3, s4Open: s3, s4Done: s4, s4Opacity: s3 ? 1 : 0.55,
       releasingTodo: !p.releasing,
       s5Locked: !s4, s5Open: s4, s5Opacity: s4 ? 1 : 0.55,
-      livingFreeUrl: this.props.livingFreeUrl || 'Living Free Workbook.dc.html',
+      livingFreeUrl: this.props.livingFreeUrl || 'Living%20Free%20Workbook.dc.html',
       markReleasing: () => this.save({releasing:true}),
 
       chapters,
@@ -796,7 +833,7 @@ class Component extends DCLogic {
         this.setState({copied:true});
         setTimeout(() => this.setState({copied:false}), 2000);
       }
-    };
+    });
   }
 }
 </script>

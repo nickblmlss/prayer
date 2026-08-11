@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/styles.css">
   <script src="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/_ds_bundle.js"></script>
   <script src="living-free-content.js"></script>
+  <script src="reveal.js"></script>
   <style>
     @font-face{font-family:'Restora';src:url('assets/fonts/RestoraLight.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap;}
     @font-face{font-family:'Restora';src:url('assets/fonts/Restora.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap;}
@@ -31,6 +32,21 @@
     @media print{[data-noprint]{display:none !important;} html,body{background:#fff;}}
   </style>
 </helmet>
+<sc-if value="{{ lfLocked }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#F7F3ED;display:flex;align-items:center;justify-content:center;padding:32px">
+    <div style="width:min(460px,100%);background:#F7F3ED;border:1px solid rgba(30,27,22,.15);border-radius:6px;box-shadow:0 8px 28px rgba(30,27,22,.06);padding:40px">
+      <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:20px">Living Free · Participants only</div>
+      <h2 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:30px;line-height:1.2;margin:0 0 16px;color:#1E1B16">Enter your access word</h2>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 28px;color:rgba(30,27,22,.7)">Your prayer lead gives you this word when you reach the workbook.</p>
+      <input type="password" value="{{ gateInput }}" onChange="{{ setGate }}" onKeyDown="{{ gateKey }}" placeholder="Access word" autoComplete="off" style="width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:12px 14px;border:1px solid rgba(30,27,22,.35);border-radius:4px;background:#FFFFFF;color:#1E1B16;margin-bottom:16px">
+      <sc-if value="{{ gateError }}">
+        <p style="font-size:14px;line-height:1.5;margin:0 0 16px;color:#9B4B4B">That word is not right. Please check with your prayer lead.</p>
+      </sc-if>
+      <button type="button" onClick="{{ submitGate }}" style="appearance:none;cursor:pointer;font:inherit;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:14px 24px;border:1px solid #1E1B16;border-radius:4px;background:#1E1B16;color:#F7F3ED;white-space:nowrap;width:auto;max-width:none" style-hover="background:#332E26;border-color:#332E26">Open the workbook</button>
+    </div>
+  </div>
+</sc-if>
+<div style="{{ gateStyle }}">
 <div style="min-height: 100vh; background: var(--cream); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.65;">
 
   <header data-noprint="true" style="position: sticky; top: 0; z-index: 20; background: var(--cream); border-bottom: 1px solid var(--ink-15);">
@@ -40,7 +56,7 @@
           <img src="assets/logo-blmlss-ink.png" alt="BLMLSS" style="height: 26px; width: auto; display: block;">
         </button>
         <nav style="display: flex; align-items: center; gap: 20px;">
-          <a href="BLMLSS Prayer Process.dc.html" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(30,27,22,.45); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 3px;">Prayer Process</a>
+          <a href="BLMLSS%20Prayer%20Process.dc.html" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(30,27,22,.45); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 3px;">Prayer Process</a>
           <span style="color: rgba(30,27,22,.25);">|</span>
           <button onClick="{{ goHome }}" style="appearance: none; border: 0; background: none; padding: 0 0 3px; cursor: pointer; font-family: var(--font-body); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink);">Living Free</button>
         </nav>
@@ -268,6 +284,7 @@
 
   <dc-import name="Site Footer" hint-size="100%,520px"></dc-import>
 </div>
+</div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"requireSequence":{"editor":"boolean","default":true,"tsType":"boolean","section":"Experience"},"showDayMap":{"editor":"boolean","default":true,"tsType":"boolean","section":"Experience"},"prayerUrl":{"editor":"text","default":"https://blmlss.com/prayer","tsType":"string","section":"Experience"}}'>
@@ -275,7 +292,7 @@
 const KEY = 'blmlss-living-free-v1';
 
 class Component extends DCLogic {
-  state = { units: null, answers: {}, done: {}, view: 'home', unitId: null, mapOpen: false, saved: '' };
+  state = { units: null, answers: {}, done: {}, view: 'home', unitId: null, mapOpen: false, saved: '', unlocked: false, gateInput: '', gateError: false };
 
   componentDidMount() {
     try {
@@ -285,6 +302,7 @@ class Component extends DCLogic {
         this.setState({ answers: d.answers || {}, done: d.done || {}, unitId: d.unitId || null });
       }
     } catch (e) {}
+    try { if (localStorage.getItem('blmlss-lf-gate-v1') === 'ok') this.setState({ unlocked: true }); } catch (e) {}
     const load = () => {
       const c = window.LIVING_FREE_CONTENT;
       if (c) this.setState({ units: c.units });
@@ -384,7 +402,25 @@ class Component extends DCLogic {
     return out;
   }
 
+  tryUnlock() {
+    if (this.state.gateInput.trim().toLowerCase() === 'wordofgod') {
+      this.setState({ unlocked: true, gateError: false, gateInput: '' });
+      try { localStorage.setItem('blmlss-lf-gate-v1', 'ok'); } catch (e) {}
+    } else {
+      this.setState({ gateError: true });
+    }
+  }
+
   renderVals() {
+    const gate = {
+      lfLocked: !this.state.unlocked,
+      gateStyle: this.state.unlocked ? '' : 'filter:blur(7px);pointer-events:none;user-select:none',
+      gateInput: this.state.gateInput,
+      gateError: this.state.gateError,
+      setGate: (e) => this.setState({ gateInput: e.target.value, gateError: false }),
+      gateKey: (e) => { if (e.key === 'Enter') this.tryUnlock(); },
+      submitGate: () => this.tryUnlock(),
+    };
     const us = this.units();
     const unlocked = this.unlockedThrough();
     const sequential = this.props.requireSequence !== false;
@@ -442,7 +478,7 @@ class Component extends DCLogic {
 
     const nextUnit = curIdx >= 0 && curIdx + 1 < us.length ? us[curIdx + 1] : null;
 
-    return {
+    return Object.assign({}, gate, {
       isHome: this.state.view === 'home',
       isUnit: this.state.view === 'unit' && !!cur,
       isPlan: this.state.view === 'plan',
@@ -495,7 +531,7 @@ class Component extends DCLogic {
         this.setState({ answers: {}, done: {}, view: 'home', unitId: null, mapOpen: false });
         if (typeof window !== 'undefined') window.scrollTo(0, 0);
       }
-    };
+    });
   }
 }
 
