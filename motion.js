@@ -15,7 +15,7 @@
   var EASE = 'cubic-bezier(.16,.84,.44,1)';
   var DUR = 700;
   var RISE = 16;
-  var DEPTH = 0.42;
+  var DEPTH = 0.12;
 
   var revealed = new WeakSet();
   var armed = new WeakSet();
@@ -109,9 +109,9 @@
     for (var i = 0; i < layers.length; i++) {
       var l = layers[i];
       var s = l.img.style;
-      if (s.getPropertyValue('height') !== '148%') {
-        s.setProperty('height', '148%', 'important');
-        s.setProperty('top', '-24%', 'important');
+      if (s.getPropertyValue('height') !== '114%') {
+        s.setProperty('height', '114%', 'important');
+        s.setProperty('top', '-7%', 'important');
         s.setProperty('bottom', 'auto', 'important');
         s.setProperty('will-change', 'transform');
       }

@@ -1,22 +1,25 @@
-repo: nickblmlss/church
+repo: nickblmlss/prayer
 branch: main
 
 ## Last sync
-date: 2026-08-27T17:11:00Z
+date: 2026-08-27T19:30:30Z
 
 ### Updated in this project
-- Checked header/footer styles against the repo: no upstream changes since the last sync — markup, colors, type and layout already match.
-- Two intentional local deviations kept: absolute `https://blameless.church/...` URLs (this project is hosted at prayerprocess.blmlss.com, with the Living Free Workbook link pointing at its own `living-free.html`), and no underline rule on the Ministries / About dropdown triggers.
-
-## Sync history
-- 2026-08-27T03:01:40Z — synced header and footer: "House church" added to the About dropdown, mobile menu regrouped under Ministries / About / Connect headings, footer About column gained "Connect with Us".
+- Repointed this project's GitHub association from `nickblmlss/church` to `nickblmlss/prayer` (branch `main`, repo root). No files were changed on either side.
+- The new repo already mirrors this project: same `index.html`, `.dc.html` sources, `assets/`, `_ds/`, and helper scripts at the repo root.
+- Local `index.html` and `BLMLSS Prayer Process.dc.html` are slightly newer than the repo copies (hero eyebrow sizing + Step 1 background). Push the exported zip to bring `nickblmlss/prayer` current.
 
 ## Screen map
-| Project screen | Repo files |
-| --- | --- |
-| BLMLSS Prayer Process.dc.html / index.html | prayer/index.html, sermons/index.html, SiteHeaderTransparent.dc.html, SiteFooter.dc.html, responsive.css, motion.js |
-| Living Free Workbook.dc.html / living-free.html | prayer/index.html, SiteHeader.dc.html, SiteFooter.dc.html, responsive.css |
+| Screen | Repo files |
+|---|---|
+| Prayer Process (home) | `index.html`, `BLMLSS Prayer Process.dc.html` |
+| Living Free Workbook | `living-free.html`, `Living Free Workbook.dc.html`, `living-free-content.js` |
+| Giving | `giving.html`, `Supporting the Ministry.dc.html` |
+| Reset progress | `reset.html`, `Reset Progress.dc.html` |
+| Shared header / footer | `SiteHeader.dc.html`, `SiteHeaderTransparent.dc.html`, `SiteFooter.dc.html` |
+| Shared styles / motion | `responsive.css`, `motion.js`, `reveal.js`, `support.js` |
+| Media | `assets/` (numeral plates, logos, photography, fonts) |
 
 ## Sync history
-- 2026-08-26T22:48:12Z — rebuilt the Prayer Process page on blameless.church/prayer's system (white page, transparent header over a full-bleed photo hero, pastel step blocks); restyled the Living Free Workbook shell to match. Previous version preserved at `BLMLSS Prayer Process v1.dc.html`.
-- 2026-08-26T21:41:15Z — pulled SiteHeader, SiteFooter, responsive.css and the ink/white web logos; mounted shared header/footer on both pages.
+- 2026-08-27T17:11:00Z — `nickblmlss/church@main`: header/footer style check, no upstream changes.
+- 2026-08-27T03:01:40Z — `nickblmlss/church@main`: synced header and footer ("House church" in About dropdown, regrouped mobile menu, "Connect with Us" in footer).

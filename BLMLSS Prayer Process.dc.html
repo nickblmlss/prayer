@@ -22,6 +22,7 @@
   body { margin: 0; background: #FFFFFF; color: #1E1B16; }
   a { color: #1E1B16; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
   a:hover { color: #1E1B16; }
+  header a, header a:hover { text-decoration: none; }
   *:focus-visible { outline: 2px solid #C8B8E4; outline-offset: 3px; }
 </style>
 </helmet>
@@ -34,10 +35,10 @@
   <dc-import name="SiteHeaderTransparent" hint-size="100%,68px"></dc-import>
 
   <section style="position: relative; height: 100vh; min-height: 700px; overflow: hidden; background: var(--ink);">
-    <img src="assets/photo-team-prayer.webp" data-parallax="" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%;">
+    <img src="assets/photo-team-prayer.webp" data-parallax="" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%;">
     <div style="position: relative; height: 100%; max-width: 1240px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end;">
       <div data-reveal="" style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 40px;">
-        <span style="padding-left: 0px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #F7F3ED">The Blameless Prayer Process</span><h1 style="margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(64px, 17vw, 116px); line-height: 0.86; letter-spacing: -0.02em; color: #F7F3ED; white-space: nowrap">Prayer</h1>
+        <span style="padding-left: 0px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #F7F3ED">The Blameless Prayer Process</span><h1 style="margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 11vw, 78px); line-height: 0.9; letter-spacing: -0.02em; color: #F7F3ED; white-space: nowrap">Prayer</h1>
         
       </div>
     </div>
@@ -54,12 +55,6 @@
       </sc-if>
     </div>
   </div>
-
-  <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 140px 32px 96px;">
-    <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">A word from our ministry president</span>
-    <p style="margin: 32px 0 0; max-width: 900px; font-family: var(--font-display); font-weight: 400; font-size: 38px; line-height: 1.16; letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; width: 1096px; height: 325px">"Over the last three years, we've had the joy and honor of being taught by the Holy Spirit how to set the captives free. We've watched the Lord move in every single prayer — miracles, deliverance, and healing, just as we read in Scripture — and we are expectant that He will do the same for you."</p>
-    <p style="margin: 40px 0 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.55);">— Nick Gravino</p>
-  </section>
 
   <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 0 32px 72px;">
     <span style="font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(30,27,22,.45);">Our prayer process:</span>
@@ -270,7 +265,13 @@
 
       
 
-      <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 120px 32px;">
+      <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 136px 32px 0;">
+        <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">A word from our ministry president</span>
+        <p style="margin: 32px 0 0; max-width: 900px; font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.16; letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty;">"Over the last three years, we've had the joy and honor of being taught by the Holy Spirit how to set the captives free. We've watched the Lord move in every single prayer — miracles, deliverance, and healing, just as we read in Scripture — and we are expectant that He will do the same for you."</p>
+        <p style="margin: 40px 0 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.55);">— Nick Gravino</p>
+      </section>
+
+      <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 56px 32px 120px;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;">
           <dc-import name="Supporting the Ministry" hint-size="100%,240px"></dc-import>
           <dc-import name="Reset Progress" description="Resetting clears every step you have marked complete, your workbook progress and all your quiz answers on this device." on-confirm="{{ resetAll }}" hint-size="100%,240px"></dc-import>
