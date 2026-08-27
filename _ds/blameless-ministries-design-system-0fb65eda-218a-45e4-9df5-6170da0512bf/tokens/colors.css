@@ -1,0 +1,77 @@
+:root{
+/* --- Base --- */
+--cream:#F7F3ED;/* site background, matches blmlss.com */
+--white:#FFFFFF;
+--ink:#1E1B16;/* primary text */
+--ink-70:rgba(30,27,22,.70);
+--ink-45:rgba(30,27,22,.45);
+--ink-15:rgba(30,27,22,.15);
+--ink-08:rgba(30,27,22,.08);
+
+/* --- Cool tones --- */
+--dusty-blue-gray:#ADC1C6;
+--deep-teal-gray:#8EAAAF;
+--powder-blue:#D9E0ED;
+--slate-blue:#AEBFD7;
+--mint:#D0EAE6;
+--sage-teal:#A5CEC7;
+
+/* --- Warm tones --- */
+--peach:#FFD2B8;
+--apricot:#FFB88F;
+--sand:#EEE6DB;
+--tan:#DAC9B5;
+--sage-green:#DCDFCE;
+--olive:#C6CCA1;
+
+/* --- Purples & pinks --- */
+--lavender:#E2DBEF;
+--light-violet:#C8B8E4;
+--blush:#F9D7DB;
+--dusty-rose:#EEADB7;
+
+/* --- Semantic surfaces --- */
+--surface-page:var(--cream);
+--surface-card:var(--white);
+--surface-muted:var(--sand);
+--surface-soft:var(--powder-blue);
+--surface-inverse:var(--deep-teal-gray);
+--surface-scripture:var(--lavender);
+
+/* --- Semantic text --- */
+--text-body:var(--ink);
+--text-muted:var(--ink-70);
+--text-eyebrow:var(--ink-45);
+--text-on-inverse:var(--cream);
+
+/* --- Lines --- */
+--border-hairline:var(--ink-15);
+--border-soft:var(--tan);
+--divider:var(--dusty-blue-gray);
+
+/* --- Interactive --- */
+--action-primary:var(--ink);
+--action-primary-text:var(--cream);
+--action-primary-hover:#332E26;
+--action-secondary:var(--apricot);
+--action-secondary-text:var(--ink);
+--action-secondary-hover:#F5A87C;
+--link:#5F7C8A;
+--link-hover:var(--ink);
+--focus-ring:var(--light-violet);
+
+/* --- Pillar accents --- */
+--pillar-discipleship:var(--tan);/* flame */
+--pillar-discipleship-figure:var(--sand);
+--pillar-freedom:var(--deep-teal-gray);/* swords */
+--pillar-freedom-figure:var(--dusty-blue-gray);
+--pillar-revival:var(--blush);/* lily */
+--pillar-revival-figure:var(--dusty-rose);
+
+/* --- Prayer process step accents --- */
+--step-1:var(--peach);
+--step-2:var(--lavender);
+--step-3:var(--sage-teal);
+--step-4:var(--slate-blue);
+--step-5:var(--sage-green);
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/base.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/styles.css">
+  <script src="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/_ds_bundle.js"></script>
+  <style>body{margin:0;background:#EEE6DB;}</style>
+</helmet>
+
+<div style="min-height:100vh;background:#EEE6DB;color:#1E1B16;font-family:var(--font-body),'Source Sans 3',system-ui,sans-serif;padding:clamp(16px,3vw,28px)">
+  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:22px">
+    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45)">Device preview</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <sc-for list="{{ pages }}" as="p" hint-placeholder-count="2">
+        <button type="button" onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-left:auto">
+      <sc-for list="{{ zooms }}" as="z" hint-placeholder-count="3">
+        <button type="button" onClick="{{ z.onClick }}" style="{{ z.style }}">{{ z.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:clamp(16px,2.5vw,32px);align-items:flex-start;overflow-x:auto;padding-bottom:20px">
+    <sc-for list="{{ frames }}" as="f" hint-placeholder-count="4">
+      <div style="flex:none">
+        <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:10px">{{ f.label }}</div>
+        <div style="{{ f.shellStyle }}">
+          <iframe src="{{ f.src }}" title="{{ f.label }}" scrolling="yes" style="{{ f.frameStyle }}"></iframe>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const PAGES = [
+  {label:'Prayer Process', src:'BLMLSS%20Prayer%20Process.dc.html'},
+  {label:'Living Free', src:'Living%20Free%20Workbook.dc.html'},
+  {label:'Reset', src:'Reset%20Progress.dc.html'},
+  {label:'Giving', src:'Supporting%20the%20Ministry.dc.html'}
+];
+const SIZES = [
+  {label:'iPhone 14 · 390', w:390, h:844},
+  {label:'Pro Max · 430', w:430, h:932},
+  {label:'iPad · 820', w:820, h:1180},
+  {label:'Desktop · 1280', w:1280, h:860}
+];
+const ZOOMS = [{label:'Fit', v:0}, {label:'50%', v:.5}, {label:'75%', v:.75}, {label:'100%', v:1}];
+
+class Component extends DCLogic {
+  state = {i:0, zoom:0, avail:900};
+
+  componentDidMount(){
+    this._fit = () => this.setState({avail: Math.max(360, window.innerHeight - 150)});
+    this._fit();
+    window.addEventListener('resize', this._fit);
+  }
+  componentWillUnmount(){ window.removeEventListener('resize', this._fit); }
+
+  btn(active){
+    return 'appearance:none;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:9px 16px;border-radius:4px;border:1px solid #1E1B16;'
+      + (active ? 'background:#1E1B16;color:#F7F3ED;' : 'background:transparent;color:#1E1B16;');
+  }
+
+  renderVals(){
+    const src = PAGES[this.state.i].src;
+    const avail = this.state.avail;
+    return {
+      pages: PAGES.map((p,i) => ({label:p.label, onClick:() => this.setState({i}), style:this.btn(i===this.state.i)})),
+      zooms: ZOOMS.map(z => ({label:z.label, onClick:() => this.setState({zoom:z.v}), style:this.btn(z.v===this.state.zoom)})),
+      frames: SIZES.map(s => {
+        const k = this.state.zoom || Math.min(1, avail / s.h);
+        return {
+          label: s.label,
+          src,
+          shellStyle: 'width:' + Math.round(s.w*k) + 'px;height:' + Math.round(s.h*k)
+            + 'px;overflow:hidden;border:1px solid rgba(30,27,22,.25);border-radius:6px;background:#F7F3ED',
+          frameStyle: 'width:' + s.w + 'px;height:' + s.h + 'px;border:0;display:block;transform:scale(' + k
+            + ');transform-origin:top left;background:#F7F3ED'
+        };
+      })
+    };
+  }
+}
+
+</script>
+</body>
+</html>

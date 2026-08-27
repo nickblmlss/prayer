@@ -1,0 +1,412 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/core/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Prata|Source Sans 3))/i]",
+        "message": "Font not provided by the design system. Available: Prata, Source Sans 3."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|size|as|href|disabled|fullWidth|children|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, size, as, href, disabled, fullWidth, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|outline|ghost|onDark)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'outline' | 'ghost' | 'onDark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
+        "message": "<Button> size must be one of 'sm' | 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='as'] > Literal[value!=/^(?:button|a)$/]",
+        "message": "<Button> as must be one of 'button' | 'a'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|as|children|key|ref|className|style|children)$/]",
+        "message": "<Eyebrow> doesn't accept that prop. Declared props: tone, as, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:muted|ink|inverse)$/]",
+        "message": "<Eyebrow> tone must be one of 'muted' | 'ink' | 'inverse'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute[name.name='as'] > Literal[value!=/^(?:div|span|p)$/]",
+        "message": "<Eyebrow> as must be one of 'div' | 'span' | 'p'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Field'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|type|name|placeholder|required|rows|value|onChange|key|ref|className|style|children)$/]",
+        "message": "<Field> doesn't accept that prop. Declared props: label, type, name, placeholder, required, rows, value, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Field'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:text|email|tel|textarea)$/]",
+        "message": "<Field> type must be one of 'text' | 'email' | 'tel' | 'textarea'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PillarCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|illustration|ground|children|key|ref|className|style|children)$/]",
+        "message": "<PillarCard> doesn't accept that prop. Declared props: title, illustration, ground, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PrayerRequestForm'] > JSXAttribute > JSXIdentifier[name!=/^(?:onSubmit|note|submitted|key|ref|className|style|children)$/]",
+        "message": "<PrayerRequestForm> doesn't accept that prop. Declared props: onSubmit, note, submitted."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ProcessStep'] > JSXAttribute > JSXIdentifier[name!=/^(?:number|plate|title|intro|items|outro|reverse|key|ref|className|style|children)$/]",
+        "message": "<ProcessStep> doesn't accept that prop. Declared props: number, plate, title, intro, items, outro, reverse."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScriptureQuote'] > JSXAttribute > JSXIdentifier[name!=/^(?:citation|ground|align|closingQuote|size|children|key|ref|className|style|children)$/]",
+        "message": "<ScriptureQuote> doesn't accept that prop. Declared props: citation, ground, align, closingQuote, size, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScriptureQuote'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center)$/]",
+        "message": "<ScriptureQuote> align must be one of 'left' | 'center'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScriptureQuote'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:md|lg)$/]",
+        "message": "<ScriptureQuote> size must be one of 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute > JSXIdentifier[name!=/^(?:eyebrow|size|align|lead|children|key|ref|className|style|children)$/]",
+        "message": "<SectionHeading> doesn't accept that prop. Declared props: eyebrow, size, align, lead, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:md|lg|xl)$/]",
+        "message": "<SectionHeading> size must be one of 'md' | 'lg' | 'xl'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionHeading'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center)$/]",
+        "message": "<SectionHeading> align must be one of 'left' | 'center'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SiteFooter'] > JSXAttribute > JSXIdentifier[name!=/^(?:links|logo|copyright|key|ref|className|style|children)$/]",
+        "message": "<SiteFooter> doesn't accept that prop. Declared props: links, logo, copyright."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SiteHeader'] > JSXAttribute > JSXIdentifier[name!=/^(?:links|logo|tone|active|onNavigate|key|ref|className|style|children)$/]",
+        "message": "<SiteHeader> doesn't accept that prop. Declared props: links, logo, tone, active, onNavigate."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SiteHeader'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:cream|dark)$/]",
+        "message": "<SiteHeader> tone must be one of 'cream' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Ticker'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|separator|speed|ground|color|key|ref|className|style|children)$/]",
+        "message": "<Ticker> doesn't accept that prop. Declared props: text, separator, speed, ground, color."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Button": {
+        "replaces": []
+      },
+      "Eyebrow": {
+        "replaces": []
+      },
+      "Field": {
+        "replaces": []
+      },
+      "PillarCard": {
+        "replaces": []
+      },
+      "PrayerRequestForm": {
+        "replaces": []
+      },
+      "ProcessStep": {
+        "replaces": []
+      },
+      "ScriptureQuote": {
+        "replaces": []
+      },
+      "SectionHeading": {
+        "replaces": []
+      },
+      "SiteFooter": {
+        "replaces": []
+      },
+      "SiteHeader": {
+        "replaces": []
+      },
+      "Ticker": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--action-primary",
+      "--action-primary-hover",
+      "--action-primary-text",
+      "--action-secondary",
+      "--action-secondary-hover",
+      "--action-secondary-text",
+      "--apricot",
+      "--blush",
+      "--border-hairline",
+      "--border-soft",
+      "--border-width",
+      "--container",
+      "--container-narrow",
+      "--cream",
+      "--deep-teal-gray",
+      "--divider",
+      "--dur-base",
+      "--dur-fast",
+      "--dur-slow",
+      "--dusty-blue-gray",
+      "--dusty-rose",
+      "--ease-entrance",
+      "--ease-standard",
+      "--focus-ring",
+      "--font-body",
+      "--font-display",
+      "--font-utility",
+      "--fs-body",
+      "--fs-display-1",
+      "--fs-display-2",
+      "--fs-eyebrow",
+      "--fs-heading-1",
+      "--fs-heading-2",
+      "--fs-heading-3",
+      "--fs-lead",
+      "--fs-small",
+      "--fw-bold",
+      "--fw-light",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--gutter",
+      "--ink",
+      "--ink-08",
+      "--ink-15",
+      "--ink-45",
+      "--ink-70",
+      "--lavender",
+      "--lh-body",
+      "--lh-display",
+      "--lh-heading",
+      "--lh-lead",
+      "--light-violet",
+      "--link",
+      "--link-hover",
+      "--ls-body",
+      "--ls-display",
+      "--ls-eyebrow",
+      "--ls-heading",
+      "--measure",
+      "--measure-tight",
+      "--mint",
+      "--olive",
+      "--peach",
+      "--pillar-discipleship",
+      "--pillar-discipleship-figure",
+      "--pillar-freedom",
+      "--pillar-freedom-figure",
+      "--pillar-revival",
+      "--pillar-revival-figure",
+      "--powder-blue",
+      "--radius-card",
+      "--radius-md",
+      "--radius-none",
+      "--radius-pill",
+      "--radius-sm",
+      "--rise-distance",
+      "--sage-green",
+      "--sage-teal",
+      "--sand",
+      "--section-y",
+      "--shadow-card",
+      "--shadow-none",
+      "--shadow-raised",
+      "--slate-blue",
+      "--space-1",
+      "--space-10",
+      "--space-11",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--space-9",
+      "--step-1",
+      "--step-2",
+      "--step-3",
+      "--step-4",
+      "--step-5",
+      "--surface-card",
+      "--surface-inverse",
+      "--surface-muted",
+      "--surface-page",
+      "--surface-scripture",
+      "--surface-soft",
+      "--tan",
+      "--text-body",
+      "--text-eyebrow",
+      "--text-muted",
+      "--text-on-inverse",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--cream": "color",
+      "--white": "color",
+      "--ink": "color",
+      "--ink-70": "color",
+      "--ink-45": "color",
+      "--ink-15": "color",
+      "--ink-08": "color",
+      "--dusty-blue-gray": "color",
+      "--deep-teal-gray": "color",
+      "--powder-blue": "color",
+      "--slate-blue": "color",
+      "--mint": "color",
+      "--sage-teal": "color",
+      "--peach": "color",
+      "--apricot": "color",
+      "--sand": "color",
+      "--tan": "color",
+      "--sage-green": "color",
+      "--olive": "color",
+      "--lavender": "color",
+      "--light-violet": "color",
+      "--blush": "color",
+      "--dusty-rose": "color",
+      "--surface-page": "color",
+      "--surface-card": "color",
+      "--surface-muted": "color",
+      "--surface-soft": "color",
+      "--surface-inverse": "color",
+      "--surface-scripture": "color",
+      "--text-body": "font",
+      "--text-muted": "font",
+      "--text-eyebrow": "font",
+      "--text-on-inverse": "font",
+      "--border-hairline": "color",
+      "--border-soft": "color",
+      "--divider": "color",
+      "--action-primary": "color",
+      "--action-primary-text": "font",
+      "--action-primary-hover": "color",
+      "--action-secondary": "color",
+      "--action-secondary-text": "font",
+      "--action-secondary-hover": "color",
+      "--link": "color",
+      "--link-hover": "color",
+      "--focus-ring": "color",
+      "--pillar-discipleship": "color",
+      "--pillar-discipleship-figure": "color",
+      "--pillar-freedom": "color",
+      "--pillar-freedom-figure": "color",
+      "--pillar-revival": "color",
+      "--pillar-revival-figure": "color",
+      "--step-1": "color",
+      "--step-2": "color",
+      "--step-3": "color",
+      "--step-4": "color",
+      "--step-5": "color",
+      "--font-display": "font",
+      "--font-body": "font",
+      "--font-utility": "font",
+      "--fs-display-1": "font",
+      "--fs-display-2": "font",
+      "--fs-heading-1": "font",
+      "--fs-heading-2": "font",
+      "--fs-heading-3": "font",
+      "--fs-lead": "font",
+      "--fs-body": "font",
+      "--fs-small": "font",
+      "--fs-eyebrow": "font",
+      "--lh-display": "font",
+      "--lh-heading": "font",
+      "--lh-body": "font",
+      "--lh-lead": "font",
+      "--ls-display": "font",
+      "--ls-heading": "font",
+      "--ls-body": "font",
+      "--ls-eyebrow": "font",
+      "--fw-light": "font",
+      "--fw-regular": "font",
+      "--fw-medium": "font",
+      "--fw-semibold": "font",
+      "--fw-bold": "font",
+      "--measure": "font",
+      "--measure-tight": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--space-9": "spacing",
+      "--space-10": "spacing",
+      "--space-11": "spacing",
+      "--section-y": "spacing",
+      "--gutter": "spacing",
+      "--container": "spacing",
+      "--container-narrow": "spacing",
+      "--radius-none": "radius",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-card": "radius",
+      "--radius-pill": "radius",
+      "--shadow-none": "shadow",
+      "--shadow-card": "shadow",
+      "--shadow-raised": "shadow",
+      "--border-width": "other",
+      "--ease-standard": "other",
+      "--ease-entrance": "other",
+      "--dur-fast": "other",
+      "--dur-base": "other",
+      "--dur-slow": "other",
+      "--rise-distance": "other"
+    },
+    "fontFamilies": [
+      "Prata",
+      "Source Sans 3"
+    ]
+  }
+}

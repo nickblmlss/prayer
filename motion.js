@@ -1,0 +1,160 @@
+/* BLMLSS scroll motion: fade-and-rise reveals + hero parallax.
+   Reveals: [data-reveal]. If the element paints its own background, its
+   children are revealed instead so the panel colour stays put.
+   Parallax: img[data-parallax] drifts 20% slower than its section.
+   Geometry is re-applied on a rAF loop because React rewrites style attrs. */
+(function () {
+  /* guard per DOCUMENT, not per realm: the preview keeps one JS realm alive
+     across page switches, so a window-level flag would skip every later page. */
+  if (document.__blmlssMotion) return;
+  document.__blmlssMotion = true;
+  window.__blmlssMotion = true;
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var EASE = 'cubic-bezier(.16,.84,.44,1)';
+  var DUR = 700;
+  var RISE = 16;
+  var DEPTH = 0.42;
+
+  var revealed = new WeakSet();
+  var armed = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      io.unobserve(el);
+      revealed.add(el);
+      if (el.__blmlssState) el.__blmlssState.shown = true;
+      el.style.transition = 'opacity ' + DUR + 'ms ' + EASE + ', transform ' + DUR + 'ms ' + EASE;
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
+
+  /* An element counts as painting its own panel if it declares any background
+     inline (var() colours resolve too late to read from computed style). */
+  function opaque(el) {
+    var inline = el.getAttribute('style') || '';
+    if (/background(-color|-image)?\s*:/.test(inline)) return true;
+    var bg = getComputedStyle(el).backgroundColor;
+    var m = bg && bg.match(/rgba?\(([^)]+)\)/);
+    if (!m) return false;
+    var parts = m[1].split(',');
+    return parts.length < 4 || parseFloat(parts[3]) > 0.02;
+  }
+
+  /* React rewrites style attributes on re-render, which wipes the inline
+     pre-reveal state. The rAF loop below re-applies it until the element has
+     been revealed, so nothing can end up stuck at its final state early. */
+  var pending = [];
+
+  function armState(el) {
+    var st = el.__blmlssState;
+    if (st.shown) {
+      if (el.style.opacity !== '1') {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+      return;
+    }
+    if (el.style.opacity !== '0') {
+      el.style.opacity = '0';
+      el.style.transform = 'translate3d(0,' + RISE + 'px,0)';
+      el.style.willChange = 'opacity, transform';
+    }
+  }
+
+  function arm(el) {
+    if (armed.has(el) || revealed.has(el)) return;
+    armed.add(el);
+    el.__blmlssState = { shown: false };
+    armState(el);
+    pending.push(el);
+    io.observe(el);
+    schedule();
+  }
+
+  var claimed = new WeakSet();
+  function claim(el) {
+    if (claimed.has(el)) return;
+    claimed.add(el);
+    if (opaque(el)) {
+      var kids = el.children;
+      for (var i = 0; i < kids.length; i++) arm(kids[i]);
+    } else {
+      arm(el);
+    }
+  }
+
+  var layers = [];
+  function claimParallax(img) {
+    if (claimed.has(img)) return;
+    claimed.add(img);
+    var host = img.parentElement;
+    if (!host) return;
+    var t = getComputedStyle(img).transform;
+    layers.push({ img: img, host: host, base: t && t !== 'none' ? t : '', last: null });
+  }
+
+  function frame() {
+    rafId = null;
+    /* drop elements that have finished revealing so this list empties out */
+    for (var k = pending.length - 1; k >= 0; k--) {
+      var pe = pending[k];
+      if (pe.__blmlssState && pe.__blmlssState.shown && pe.style.opacity === '1') pending.splice(k, 1);
+      else armState(pe);
+    }
+    var vh = window.innerHeight;
+    for (var i = 0; i < layers.length; i++) {
+      var l = layers[i];
+      var s = l.img.style;
+      if (s.getPropertyValue('height') !== '148%') {
+        s.setProperty('height', '148%', 'important');
+        s.setProperty('top', '-24%', 'important');
+        s.setProperty('bottom', 'auto', 'important');
+        s.setProperty('will-change', 'transform');
+      }
+      var r = l.host.getBoundingClientRect();
+      var span = r.height + vh;
+      if (span <= 0) continue;
+      var p = (vh - r.top) / span;
+      p = p < 0 ? 0 : p > 1 ? 1 : p;
+      var v = 'translate3d(0,' + ((p - 0.5) * r.height * DEPTH).toFixed(2) + 'px,0) ' + l.base;
+      if (v !== l.last || s.transform !== v) {
+        l.last = v;
+        s.setProperty('transform', v, 'important');
+      }
+    }
+    /* keep ticking only while pre-reveal state still needs re-applying */
+    if (pending.length) schedule();
+  }
+
+  var rafId = null;
+  function schedule() {
+    if (rafId === null) rafId = requestAnimationFrame(frame);
+  }
+
+  function scan(root) {
+    if (!root || root.nodeType !== 1) return;
+    if (root.matches('[data-reveal]')) claim(root);
+    root.querySelectorAll('[data-reveal]').forEach(claim);
+    if (root.matches('img[data-parallax]')) claimParallax(root);
+    root.querySelectorAll('img[data-parallax]').forEach(claimParallax);
+  }
+
+  function start() {
+    scan(document.body);
+    new MutationObserver(function (muts) {
+      muts.forEach(function (m) { m.addedNodes.forEach(scan); });
+    }).observe(document.body, { childList: true, subtree: true });
+    /* parallax follows scroll instead of a free-running loop; capture phase so
+       it works regardless of which ancestor is the scroller */
+    document.addEventListener('scroll', schedule, { capture: true, passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    schedule();
+  }
+
+  if (document.body) start();
+  else addEventListener('DOMContentLoaded', start);
+})();

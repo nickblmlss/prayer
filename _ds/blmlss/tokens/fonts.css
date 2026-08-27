@@ -1,0 +1,5 @@
+/* Display + body two-font system. GT America (Passion City reference) is licensed;
+   General Sans is the free bold-grotesk stand-in. Loaded from CDN — swap to local
+   @font-face if the ministry licenses GT America. */
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");

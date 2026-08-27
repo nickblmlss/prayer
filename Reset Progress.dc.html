@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/base.css">
+  <link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/styles.css">
+  <script src="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/_ds_bundle.js"></script>
+  <style>
+    @font-face{font-family:'Restora';src:url('assets/fonts/Restora.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap;}
+    :root{--font-display:'Restora','Prata',Georgia,serif;}
+  
+    /* --- responsive / mobile --- */
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+    body{overflow-x:hidden;-webkit-overflow-scrolling:touch;}
+    img,iframe,video,select,textarea,input{max-width:100%;}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+    @media (max-width:900px){
+      [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important;}
+      section{padding-left:20px!important;padding-right:20px!important;}
+      main[style*="padding"]{padding-left:20px!important;padding-right:20px!important;}
+      main p,main blockquote,main h1,main h2,main h3,main figure,footer p,footer div{max-width:100%!important;}
+      main p,main blockquote,footer p{width:auto!important;height:auto!important;}
+      article[style*="padding: 40px"],article[style*="padding:40px"]{padding:24px!important;gap:24px!important;}
+      article img[alt^="Step"],article img[alt^="step"]{width:96px!important;height:96px!important;}
+      div[style*="padding: 28px"],div[style*="padding:28px"]{padding:20px!important;}
+      img[style*="height: 380px"],img[style*="height:380px"]{height:220px!important;}
+      div[style*="align-self: stretch"],div[style*="align-self:stretch"]{min-height:1px;}
+      h3{font-size:26px!important;}
+      button,select{min-height:44px;}
+      [data-r="bar"]{padding:12px 20px!important;gap:12px!important;flex-wrap:wrap!important;}
+      [data-r="bar"] nav{flex-wrap:wrap!important;gap:14px!important;}
+      [data-r="bar"] > div{min-width:0!important;}
+    }
+    @media (max-width:600px){
+      section{padding-left:16px!important;padding-right:16px!important;}
+      main[style*="padding"]{padding-left:16px!important;padding-right:16px!important;}
+      article[style*="padding: 40px"],article[style*="padding:40px"]{padding:20px!important;}
+    }
+  
+    /* edge guard: nothing extends past the right screen edge */
+    *,*::before,*::after{box-sizing:border-box;}
+    html,body{max-width:100%;overflow-x:hidden;}
+    h1,h2,h3,h4,p,li,blockquote,span,a,label,td{overflow-wrap:break-word;}
+    [style*="grid-template-columns"],[style*="display:flex"],[style*="display: flex"]{min-width:0;}
+
+    /* wordmark: ~45% smaller and centered on phones + iPad */
+    @media (max-width:1024px){
+      header a[href] > img[alt="BLMLSS"],
+      header button > img[alt="BLMLSS"],
+      [data-r="bar"] img[alt="BLMLSS"],
+      img[alt="BLMLSS"]{height:clamp(20px,3.4vw,26px)!important;margin:0!important;}
+      [data-r="bar"] > div:first-child,
+      header > div > div:first-child{flex-direction:row!important;align-items:center!important;gap:clamp(14px,3vw,28px)!important;}
+      [data-r="bar"] nav,
+      header nav{justify-content:flex-start!important;flex-wrap:wrap!important;}
+    }
+</style>
+</helmet>
+
+<section style="font-family: var(--font-body),'Source Sans 3',system-ui,sans-serif; color: #1E1B16; width: 100%; max-width: 64ch">
+  <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:12px">{{ eyebrow }}</div>
+  
+  <h3 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:26px;line-height:1.22;margin:0 0 14px">{{ heading }}</h3><p style="font-size:17px;line-height:1.65;margin:0 0 20px;color:rgba(30,27,22,.7)">{{ description }}</p>
+
+  <sc-if value="{{ isClosed }}" hint-placeholder-val="{{ true }}">
+    <button type="button" onClick="{{ open }}" style="appearance:none;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:10px 18px;border:1px solid rgba(30,27,22,.15);border-radius:4px;background:transparent;color:#1E1B16;white-space:normal;max-width:100%;text-align:left" style-hover="background:#EEE6DB">{{ buttonLabel }}</button>
+  </sc-if>
+
+  <sc-if value="{{ isOpen }}">
+    <div style="background:#F9D7DB;padding:28px;border-radius:6px;max-width:52ch">
+      <p style="font-size:16px;line-height:1.6;margin:0 0 6px"><strong>{{ confirmHeading }}</strong></p>
+      <p style="font-size:16px;line-height:1.6;margin:0 0 18px">This cannot be undone. To confirm, type <strong>reset</strong> in the field below.</p>
+      <input type="text" value="{{ typedValue }}" onChange="{{ onTyped }}" placeholder="reset" aria-label="Type reset to confirm" style="width:100%;box-sizing:border-box;padding:12px 14px;font-size:17px;font-family:inherit;background:#FFFFFF;border:1px solid rgba(30,27,22,.15);border-radius:4px;color:#1E1B16;margin-bottom:18px">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <button type="button" onClick="{{ confirm }}" disabled="{{ disabled }}" style="{{ confirmStyle }}">{{ confirmLabel }}</button>
+        <button type="button" onClick="{{ cancel }}" style="appearance:none;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:10px 18px;border:0;background:none;color:rgba(30,27,22,.55)">Cancel</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ justReset }}">
+    <div style="margin-top:18px;font-size:15px;line-height:1.6;color:rgba(30,27,22,.7)">Everything has been cleared. You can start again from the beginning.</div>
+  </sc-if>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:320},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Starting over&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Reset your answers&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;description&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Resetting clears every step you have marked complete, your reading progress and everything you have written on this device.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;buttonLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Reset your answers&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;confirmHeading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Are you sure?&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;confirmLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Reset everything&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onConfirm&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { open: false, typed: '', reset: false };
+
+  ok(){ return (this.state.typed || '').trim().toLowerCase() === 'reset'; }
+
+  renderVals(){
+    const ok = this.ok();
+    return {
+      eyebrow: this.props.eyebrow ?? 'Starting over',
+      heading: this.props.heading ?? 'Reset your answers',
+      description: this.props.description ?? 'Resetting clears every step you have marked complete, your reading progress and everything you have written on this device. Clearing browser data will also delete progress!',
+      buttonLabel: this.props.buttonLabel ?? 'Reset your answers',
+      confirmHeading: this.props.confirmHeading ?? 'Are you sure?',
+      confirmLabel: this.props.confirmLabel ?? 'Reset everything',
+      isClosed: !this.state.open,
+      isOpen: this.state.open,
+      justReset: this.state.reset && !this.state.open,
+      typedValue: this.state.typed,
+      disabled: !ok,
+      confirmStyle: 'appearance:none;font:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:10px 18px;border-radius:4px;border:1px solid #1E1B16;' +
+        (ok ? 'background:#1E1B16;color:#F7F3ED;cursor:pointer;'
+            : 'background:rgba(30,27,22,.08);color:rgba(30,27,22,.35);border-color:rgba(30,27,22,.15);cursor:not-allowed;'),
+      open: () => this.setState({ open: true, typed: '', reset: false }),
+      cancel: () => this.setState({ open: false, typed: '' }),
+      onTyped: (e) => this.setState({ typed: e.target.value }),
+      confirm: () => {
+        if (!this.ok()) return;
+        if (typeof this.props.onConfirm === 'function') this.props.onConfirm();
+        this.setState({ open: false, typed: '', reset: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

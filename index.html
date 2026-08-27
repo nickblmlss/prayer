@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/colors.css">
+<link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/typography.css">
+<link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/effects.css">
+<link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/tokens/base.css">
+<link rel="stylesheet" href="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/styles.css">
+<link rel="stylesheet" href="responsive.css">
+<script src="_ds/blameless-ministries-design-system-0fb65eda-218a-45e4-9df5-6170da0512bf/_ds_bundle.js"></script>
+<script src="motion.js"></script>
+<style>
+  body { margin: 0; background: #FFFFFF; color: #1E1B16; }
+  a { color: #1E1B16; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: #1E1B16; }
+  *:focus-visible { outline: 2px solid #C8B8E4; outline-offset: 3px; }
+</style>
+</helmet>
+
+<div style="background: #FFFFFF; color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.65;">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main>
+
+  <dc-import name="SiteHeaderTransparent" hint-size="100%,68px"></dc-import>
+
+  <section style="position: relative; height: 100vh; min-height: 700px; overflow: hidden; background: var(--ink);">
+    <img src="assets/photo-team-prayer.webp" data-parallax="" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%;">
+    <div style="position: relative; height: 100%; max-width: 1240px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end;">
+      <div data-reveal="" style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 40px;">
+        <span style="padding-left: 0px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #F7F3ED">The Blameless Prayer Process</span><h1 style="margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(64px, 17vw, 116px); line-height: 0.86; letter-spacing: -0.02em; color: #F7F3ED; white-space: nowrap">Prayer</h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div style="background: #FFFFFF; border-bottom: 1px solid var(--border-hairline);">
+    <div data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">{{ progressLabel }}</span>
+      <div style="flex: 1 1 220px; height: 2px; background: rgba(30,27,22,.12); position: relative; min-width: 160px;">
+        <div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{ progressPct }}; background: #1E1B16;"></div>
+      </div>
+      <sc-if value="{{ s5Open }}">
+        <a href="{{ livingFreeUrl }}" target="_blank" rel="noopener" style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink-15); padding: 9px 18px;" style-hover="background: var(--cream);">Living Free workbook</a>
+      </sc-if>
+    </div>
+  </div>
+
+  <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 140px 32px 96px;">
+    <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">A word from our ministry president</span>
+    <p style="margin: 32px 0 0; max-width: 900px; font-family: var(--font-display); font-weight: 400; font-size: 38px; line-height: 1.16; letter-spacing: -0.01em; color: var(--ink); text-wrap: pretty; width: 1096px; height: 325px">"Over the last three years, we've had the joy and honor of being taught by the Holy Spirit how to set the captives free. We've watched the Lord move in every single prayer — miracles, deliverance, and healing, just as we read in Scripture — and we are expectant that He will do the same for you."</p>
+    <p style="margin: 40px 0 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.55);">— Nick Gravino</p>
+  </section>
+
+  <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 0 32px 72px;">
+    <span style="font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(30,27,22,.45);">Our prayer process:</span>
+    <p style="margin: 28px 0 0; max-width: 34ch; font-family: var(--font-display); font-weight: 400; font-size: 44px; line-height: 1.16; letter-spacing: -0.01em; text-wrap: pretty;">This process, order, and approach has been curated in partnership with the Holy Spirit.</p>
+    <div style="margin: 36px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 900px;">
+      <p style="margin: 0; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.75);">Each step below opens once the step before it is finished, so you always know exactly what is next and nothing is skipped. Watch the intro video, complete your pre-work, then we pray together.</p>
+      <p style="margin: 0; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.75);">Your progress is saved on this device, so you can close this page and come back to it. If anything is unclear at any point, email your prayer lead and we will walk through it with you.</p>
+    </div>
+  </section>
+
+  <div style="position: relative;">
+    <div style="{{ gateStyle }}">
+
+  <section data-reveal="" style="background: #FFD2B8; padding: 104px 48px; opacity: 1;">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">Step 01</span><sc-if value="{{ s1Done }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 999px;">Complete</span></sc-if>
+        </div>
+        <img src="assets/num-1-peach.webp" alt="" style="width: 132px; height: 132px; object-fit: cover; display: block;">
+        <h2 style="margin: 0; max-width: 18ch; font-family: 'General Sans', var(--font-body), sans-serif; font-weight: 700; font-size: 42px; line-height: 1.08; letter-spacing: -0.025em; color: var(--ink); text-wrap: pretty;">Watch the Intro Video</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 24px; padding-top: 6px;">
+        <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">A short word from our President, Nick, before you begin outlining a high-level overview of our prayer process. If questions come up while you watch, email us and we will jump on a quick call before you dive in!</p>
+        <div style="width: 100%; aspect-ratio: 16/9; background: #1E1B16; position: relative; overflow: hidden;">
+          <sc-if value="{{ videoIdle }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ playVideo }}" aria-label="Play the intro video" style="position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: #1E1B16; display: block;">
+              <img src="https://i.ytimg.com/vi/NeaLyeg70JU/maxresdefault.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 88px; height: 88px; border-radius: 999px; background: rgba(30,27,22,.72); display: flex; align-items: center; justify-content: center;">
+                <span style="width: 0; height: 0; margin-left: 6px; border-left: 26px solid #F7F3ED; border-top: 16px solid transparent; border-bottom: 16px solid transparent; display: block;"></span>
+              </span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ videoPlaying }}">
+            <iframe src="https://www.youtube.com/embed/NeaLyeg70JU?si=_88uydEpyVebWmew&amp;autoplay=1&amp;rel=0&amp;modestbranding=1" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" style="width: 100%; height: 100%; border: 0; display: block;"></iframe>
+          </sc-if>
+        </div>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+          <sc-if value="{{ s1Open }}">
+            <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" onClick="{{ markIntro }}" hint-size="auto,48px">I’ve watched the intro video</x-import>
+          </sc-if>
+          <a href="mailto:prayer@blmlss.com?subject=Question%20about%20my%20BLMLSS%20Prayer%20Process" style="font-size: 16px;">Have any questions? Please reach out here!</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="background: #C8B8E4; padding: 104px 48px; opacity: {{ s2Opacity }};">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">Step 02</span><sc-if value="{{ s2Locked }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(30,27,22,.10); padding: 5px 12px; border-radius: 999px; color: rgba(30,27,22,.6);">Locked</span></sc-if><sc-if value="{{ s2Done }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 999px;">Complete</span></sc-if>
+        </div>
+        <img src="assets/num-2-lavender.webp" alt="" style="width: 132px; height: 132px; object-fit: cover; display: block;">
+        <h2 style="margin: 0; max-width: 18ch; font-family: 'General Sans', var(--font-body), sans-serif; font-weight: 700; font-size: 42px; line-height: 1.08; letter-spacing: -0.025em; color: var(--ink); text-wrap: pretty;">Pre-work Completion</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 24px; padding-top: 6px;">
+        <sc-if value="{{ s2Locked }}">
+          <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">Opens once you have watched the intro video.</p>
+        </sc-if>
+        <sc-if value="{{ s2Open }}">
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="border: 1px solid rgba(30,27,22,.18); padding: clamp(18px,3vw,28px); background: rgba(255,255,255,.55);">
+              <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45); margin-bottom: 12px;">Assignment one</div>
+              <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78); margin-bottom: 20px;"><strong style="color: var(--ink);">Fill out the “BLAMELESS Consent &amp; Intake Form”</strong> and email either a signed digital or physical copy to your prayer lead. Each prayer lead email address is in the drop down in the black box, so look for the right person and it'll open up to send them an email directly!</p>
+              <div style="display: grid; gap: 12px; max-width: 480px; align-items: center;">
+                <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" as="a" href="{{ intakeFormUrl }}" target="_blank" rel="noopener" size="sm" hint-size="100%,40px" style="display: grid; width: 100%;" full-width="{{ true }}">Click for the consent &amp; intake form</x-import>
+                <div style="display: flex; align-items: stretch; width: 100%; border: 1px solid #1E1B16; border-radius: 4px; overflow: hidden;">
+                  <a href="{{ leadMailto }}" style="flex: 1 1 auto; display: flex; align-items: center; justify-content: center; padding: 0 16px; height: 40px; background: #1E1B16; color: #F7F3ED; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; white-space: nowrap;">Email my signed form</a>
+                  <select value="{{ leadValue }}" onChange="{{ onLeadChange }}" aria-label="Choose your Prayer Lead" style="height: 40px; border: 0; border-left: 1px solid rgba(247,243,237,.3); background: #1E1B16; color: #F7F3ED; font-family: inherit; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; padding: 0 12px; cursor: pointer;">
+                    <sc-for list="{{ leads }}" as="lead" hint-placeholder-count="7">
+                      <option value="{{ lead.email }}">{{ lead.name }}</option>
+                    </sc-for>
+                  </select>
+                </div>
+                <sc-if value="{{ intakeTodo }}">
+                  <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="outline" size="sm" onClick="{{ markIntake }}" hint-size="auto,40px">Mark as sent</x-import>
+                </sc-if>
+                <sc-if value="{{ intakeDone }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 999px;">Sent</span></sc-if>
+              </div>
+            </div>
+
+            <div style="border: 1px solid rgba(30,27,22,.18); padding: clamp(18px,3vw,28px); background: rgba(255,255,255,.55);">
+              <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45); margin-bottom: 12px;">Assignment two</div>
+              <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78); margin-bottom: 20px;"><strong style="color: var(--ink);">Read Vlad’s Online E-Course Outline &amp; Workbook</strong>: ten sections, read in order and marked off as you go.</p>
+              <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="outline" size="sm" onClick="{{ openWorkbook }}" hint-size="auto,40px">{{ workbookCta }}</x-import>
+                <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">{{ chaptersLabel }}</span>
+              </div>
+            </div>
+
+            <div style="border: 1px solid rgba(30,27,22,.18); padding: clamp(18px,3vw,28px); background: rgba(255,255,255,.55);">
+              <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45); margin-bottom: 12px;">Assignment three</div>
+              <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78); margin-bottom: 20px;"><strong style="color: var(--ink);">Complete the Deliverance E-Course Quiz</strong>. Once you’ve completed the quiz, let me know via email that you’ve finished this portion of the pre-work.</p>
+              <sc-if value="{{ quizLocked }}">
+                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(30,27,22,.7);">Opens once all ten sections of the workbook are marked read.</p>
+              </sc-if>
+              <sc-if value="{{ quizOpen }}">
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                  <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="outline" size="sm" onClick="{{ openQuiz }}" hint-size="auto,40px">{{ quizCta }}</x-import>
+                  <sc-if value="{{ quizDone }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 999px;">Passed</span></sc-if>
+                </div>
+              </sc-if>
+            </div>
+
+            <div style="border: 1px solid rgba(30,27,22,.18); padding: clamp(18px,3vw,28px); background: rgba(255,255,255,.55);">
+              <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45); margin-bottom: 12px;">Optional</div>
+              <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78); margin-bottom: 24px;">If you’re interested in learning more, here are some additional resources we’ve found helpful.</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                <div>
+                  <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45); margin-bottom: 14px;">Jon Thompson’s Intro to Deliverance (videos)</div>
+                  <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://www.youtube.com/watch?v=PJnMkUOUzg0" target="_blank" rel="noopener" style="font-size: 16px; line-height: 1.5;">Demonization Part 1: Deliverance Lecture</a>
+                    <a href="https://www.youtube.com/watch?v=7g4Iz3G1-Ns" target="_blank" rel="noopener" style="font-size: 16px; line-height: 1.5;">Demonization Part 2: Deliverance Lecture</a>
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45); margin-bottom: 14px;">Books on Deliverance</div>
+                  <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://www.amazon.com/They-Shall-Expel-Demons-Demons-Your/dp/0800799607" target="_blank" rel="noopener" style="font-size: 16px; line-height: 1.5;">They Shall Expel Demons by Derek Prince</a>
+                    <a href="https://www.amazon.com/Deliverance-Journey-Unexpected-Jon-Thompson/dp/1950007642" target="_blank" rel="noopener" style="font-size: 16px; line-height: 1.5;">Deliverance: A Journey Toward Unexpected Freedom by Jon Thompson</a>
+                    <a href="https://www.amazon.com/Convergence-Jesus-Savior-thrive-Christian/dp/1790607957" target="_blank" rel="noopener" style="font-size: 16px; line-height: 1.5;">Convergence by Jon Thompson</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p style="margin: 8px 0 0; max-width: 64ch; font-size: 13px; font-style: italic; line-height: 1.7; color: rgba(30,27,22,.7);">* The Intake Form helps us prepare for your Renouncing Prayer, and the E-course will help establish an understanding helpful to walk in freedom and live out your deliverance after the prayer sessions. A completed Intake Form and E-course quiz are required before moving forward and scheduling both your Renouncing and Releasing Prayers.</p>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="background: #D0EAE6; padding: 104px 48px; opacity: {{ s3Opacity }};">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">Step 03</span><sc-if value="{{ s3Locked }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(30,27,22,.10); padding: 5px 12px; border-radius: 999px; color: rgba(30,27,22,.6);">Locked</span></sc-if><sc-if value="{{ s3Done }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 999px;">Complete</span></sc-if>
+        </div>
+        <img src="assets/num-3-teal.webp" alt="" style="width: 132px; height: 132px; object-fit: cover; display: block;">
+        <h2 style="margin: 0; max-width: 18ch; font-family: 'General Sans', var(--font-body), sans-serif; font-weight: 700; font-size: 42px; line-height: 1.08; letter-spacing: -0.025em; color: var(--ink); text-wrap: pretty;">The Renouncing Prayer</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 24px; padding-top: 6px;">
+        <sc-if value="{{ s3Locked }}">
+          <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">Opens once your Intake Form is sent and the E-course quiz is complete.</p>
+        </sc-if>
+        <sc-if value="{{ s3Open }}">
+          <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+            <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">A 90-minute session where your Prayer Lead (me) will guide you through confessing, repenting and renouncing any and all possible open doors to the kingdom of darkness based on your completed Intake Form.</p>
+            <sc-if value="{{ renouncingTodo }}">
+              <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="outline" size="sm" onClick="{{ markRenouncing }}" hint-size="auto,40px">Mark session complete</x-import>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="background: #AEBFD7; padding: 104px 48px; opacity: {{ s4Opacity }};">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">Step 04</span><sc-if value="{{ s4Locked }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(30,27,22,.10); padding: 5px 12px; border-radius: 999px; color: rgba(30,27,22,.6);">Locked</span></sc-if><sc-if value="{{ s4Done }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(255,255,255,.75); padding: 5px 12px; border-radius: 999px;">Complete</span></sc-if>
+        </div>
+        <img src="assets/num-4-blue.webp" alt="" style="width: 132px; height: 132px; object-fit: cover; display: block;">
+        <h2 style="margin: 0; max-width: 18ch; font-family: 'General Sans', var(--font-body), sans-serif; font-weight: 700; font-size: 42px; line-height: 1.08; letter-spacing: -0.025em; color: var(--ink); text-wrap: pretty;">The Releasing Prayer</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 24px; padding-top: 6px;">
+        <sc-if value="{{ s4Locked }}">
+          <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">Opens once your Renouncing Prayer session is complete.</p>
+        </sc-if>
+        <sc-if value="{{ s4Open }}">
+          <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+            <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">A 4-hour session where me and a team of 2-3 additional Prayer Team Members will lead you through deliverance, cleaning your temple of everything unclean, and coming into alignment with the Kingdom of God and all that He has for you</p>
+            <sc-if value="{{ releasingTodo }}">
+              <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="outline" size="sm" onClick="{{ markReleasing }}" hint-size="auto,40px">Mark session complete</x-import>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="background: #DCDFCE; padding: 104px 48px; opacity: {{ s5Opacity }};">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">Step 05 — Optional</span><sc-if value="{{ s5Locked }}"><span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; background: rgba(30,27,22,.10); padding: 5px 12px; border-radius: 999px; color: rgba(30,27,22,.6);">Locked</span></sc-if>
+        </div>
+        <img src="assets/num-5-green.webp" alt="" style="width: 132px; height: 132px; object-fit: cover; display: block;">
+        <h2 style="margin: 0; max-width: 18ch; font-family: 'General Sans', var(--font-body), sans-serif; font-weight: 700; font-size: 42px; line-height: 1.08; letter-spacing: -0.025em; color: var(--ink); text-wrap: pretty;">Living Free Workbook</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 24px; padding-top: 6px;">
+        <sc-if value="{{ s5Locked }}">
+          <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">Opens once your Releasing Prayer session is complete.</p>
+        </sc-if>
+        <sc-if value="{{ s5Open }}">
+          <div style="display: flex; flex-direction: column; gap: 20px; align-items: flex-start;">
+            <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">Deliverance sets you free, but discipleship — following God and His ways — is how you continue to walk in freedom for the rest of your life. The Living Free workbook is how we walk that out with you after your prayer sessions.</p>
+            <p style="margin: 0; max-width: 48ch; font-size: 17px; line-height: 1.7; color: rgba(30,27,22,.78);">Password is: <strong style="color: var(--ink);">wordofgod</strong></p>
+            <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" as="a" href="{{ livingFreeUrl }}" target="_blank" rel="noopener" size="sm" hint-size="auto,40px">Open the Living Free workbook</x-import>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+      
+
+      <section data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 120px 32px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;">
+          <dc-import name="Supporting the Ministry" hint-size="100%,240px"></dc-import>
+          <dc-import name="Reset Progress" description="Resetting clears every step you have marked complete, your workbook progress and all your quiz answers on this device." on-confirm="{{ resetAll }}" hint-size="100%,240px"></dc-import>
+        </div>
+      </section>
+    </div>
+    <sc-if value="{{ locked }}">
+      <div style="position: absolute; inset: 0; display: flex; justify-content: center; background: rgba(255,255,255,.55);">
+        <div style="position: sticky; top: 96px; align-self: flex-start; margin-top: 72px; width: min(460px,100%); background: #FFFFFF; border: 1px solid rgba(30,27,22,.15); padding: 40px;">
+          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45); margin-bottom: 20px;">Participants only</div>
+          <h2 style="margin: 0 0 16px; font-family: var(--font-display); font-weight: 400; font-size: 30px; line-height: 1.2;">Enter your access word</h2>
+          <p style="margin: 0 0 28px; font-size: 16px; line-height: 1.6; color: rgba(30,27,22,.7);">Your prayer lead gives you this word when your process begins.</p>
+          <input type="password" value="{{ gateInput }}" onChange="{{ setGate }}" onKeyDown="{{ gateKey }}" placeholder="Access word" autoComplete="off" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid rgba(30,27,22,.35); background: #FFFFFF; color: #1E1B16; margin-bottom: 16px;">
+          <sc-if value="{{ gateError }}">
+            <p style="margin: 0 0 16px; font-size: 14px; line-height: 1.5; color: #9B4B4B;">That word is not right. Please check with your prayer lead.</p>
+          </sc-if>
+          <button type="button" onClick="{{ submitGate }}" style="appearance: none; cursor: pointer; font: inherit; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; padding: 14px 24px; border: 1px solid #1E1B16; border-radius: 4px; background: #1E1B16; color: #F7F3ED; white-space: nowrap;" style-hover="background: #332E26; border-color: #332E26;">Unlock my process</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isWorkbook }}">
+  <dc-import name="SiteHeader" hint-size="100%,68px"></dc-import>
+  <main style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,56px) clamp(16px,4vw,32px) clamp(72px,10vw,120px)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;margin-bottom:48px">
+      <div>
+        <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:20px">Assignment two · Step 2</div>
+        <h1 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:clamp(36px,4.4vw,58px);line-height:1.14;margin:0;max-width:20ch">Deliverance from Demons E-Course Outline &amp; Workbook</h1>
+        <p style="font-size:17px;line-height:1.65;max-width:60ch;margin:24px 0 0;color:rgba(30,27,22,.7)">Vladimir Savchuk. Read each section, then mark it read. All ten unlock the quiz.</p>
+      </div>
+    </div>
+
+    <div style="background:#F7F3ED;border-bottom:1px solid rgba(30,27,22,.15);padding:14px 0;margin-bottom:56px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-right:8px">{{ chaptersLabel }}</span>
+      <sc-for list="{{ chapterChips }}" as="chip" hint-placeholder-count="10">
+        <a href="{{ chip.href }}" style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:12px;text-decoration:none;color:#1E1B16;border:1px solid rgba(30,27,22,.15);background:{{ chip.bg }}">{{ chip.n }}</a>
+      </sc-for>
+      <div style="flex:1 1 40px"></div>
+      <button type="button" onClick="{{ goHome }}" style="appearance:none;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:10px 18px;border:1px solid #1E1B16;border-radius:4px;background:#1E1B16;color:#F7F3ED;white-space:nowrap" style-hover="background:#332E26;border-color:#332E26">←&nbsp; Back to my process</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:96px">
+      <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="3">
+        <article id="{{ ch.anchor }}" data-reveal="" style="scroll-margin-top:120px">
+          <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start">
+            <div style="background:{{ ch.tint }};padding:40px">
+              <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:20px">Section {{ ch.n }} of 10</div>
+              <h2 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:34px;line-height:1.16;margin:0 0 24px">{{ ch.title }}</h2>
+              <p style="font-family:var(--font-display),'Prata',Georgia,serif;font-size:19px;line-height:1.45;margin:0;color:rgba(30,27,22,.7)">{{ ch.epigraph }}</p>
+            </div>
+            <div>
+              <div style="display:flex;flex-direction:column;gap:18px">
+                <sc-for list="{{ ch.blocks }}" as="b" hint-placeholder-count="4">
+                  <div>
+                    <sc-if value="{{ b.isH }}"><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:14px">{{ b.text }}</div></sc-if>
+                    <sc-if value="{{ b.isP }}"><p style="font-size:17px;line-height:1.65;margin:0;max-width:62ch">{{ b.text }}</p></sc-if>
+                    <sc-if value="{{ b.isV }}">
+                      <div style="border-left:0;padding:18px 22px;background:#EEE6DB;max-width:62ch">
+                        <p style="font-family:var(--font-display),'Prata',Georgia,serif;font-size:18px;line-height:1.45;margin:0">“{{ b.text }}”</p>
+                        <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:12px;color:rgba(30,27,22,.45)">{{ b.ref }}</div>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(30,27,22,.15);display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+                <sc-if value="{{ ch.todo }}">
+                  <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" size="sm" onClick="{{ ch.mark }}" hint-size="auto,40px">Mark section {{ ch.n }} as read</x-import>
+                </sc-if>
+                <sc-if value="{{ ch.read }}">
+                  <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:#D0EAE6;padding:7px 14px;border-radius:999px">Read</span>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:96px;padding-top:40px;border-top:1px solid rgba(30,27,22,.15);display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <sc-if value="{{ quizOpen }}">
+        <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" onClick="{{ openQuiz }}" hint-size="auto,48px">Continue to the quiz</x-import>
+      </sc-if>
+      <sc-if value="{{ quizLocked }}">
+        <span style="font-size:15px;line-height:1.6;color:rgba(30,27,22,.7)">Mark every section read to open the quiz.</span>
+      </sc-if>
+      <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="ghost" size="sm" onClick="{{ goHome }}" hint-size="auto,40px">Back to my process</x-import>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isQuiz }}">
+  <dc-import name="SiteHeader" hint-size="100%,68px"></dc-import>
+  <main style="max-width:860px;margin:0 auto;padding:clamp(40px,6vw,56px) clamp(16px,4vw,32px) clamp(72px,10vw,120px)">
+    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin-bottom:20px">Assignment three · Step 2</div>
+    <h1 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:clamp(36px,4.4vw,54px);line-height:1.14;margin:0">Deliverance E-Course Quiz</h1>
+    <div style="display:flex;flex-direction:column;gap:20px;margin-top:32px">
+      <p style="font-size:17px;line-height:1.65;margin:0">Thank you for taking the time to read Vladimir Savchuk’s Deliverance from Demons E-Course Outline &amp; Workbook as part of the BLMLSS Prayer Process. This quiz is based directly on the content covered throughout the PDF workbook.</p>
+      <p style="font-size:17px;line-height:1.65;margin:0">The purpose of this quiz is not to test theological expertise or perfection, but to ensure engagement with the material before moving forward in the prayer process. The questions below will cover core themes throughout the e-course and establish a foundational understanding of: spiritual warfare, repentance and renunciation, open doors, renewing the mind, sanctification, maintaining freedom in Christ.</p>
+      <p style="font-size:17px;line-height:1.65;margin:0">Please answer the questions honestly and thoughtfully based on the content provided in the e-course.</p>
+      <p style="font-size:17px;line-height:1.65;margin:0">We are expectant for what the Lord desires to do in and through your life as you pursue deeper freedom, healing, and intimacy with Jesus.</p>
+    </div>
+
+    <hr style="border:0;border-top:1px solid rgba(30,27,22,.15);margin:48px 0">
+
+    <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:48px">
+      <label style="display:block">
+        <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);display:block;margin-bottom:10px">Full name</span>
+        <input type="text" value="{{ nameValue }}" onChange="{{ onName }}" style="width:100%;box-sizing:border-box;padding:14px 16px;font-size:17px;font-family:inherit;background:#FFFFFF;border:1px solid rgba(30,27,22,.15);border-radius:4px;color:#1E1B16">
+      </label>
+      <label style="display:block">
+        <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);display:block;margin-bottom:10px">Email</span>
+        <input type="email" value="{{ emailValue }}" onChange="{{ onEmail }}" style="width:100%;box-sizing:border-box;padding:14px 16px;font-size:17px;font-family:inherit;background:#FFFFFF;border:1px solid rgba(30,27,22,.15);border-radius:4px;color:#1E1B16">
+      </label>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:48px">
+      <sc-for list="{{ questions }}" as="q" hint-placeholder-count="6">
+        <div>
+          <div style="display:flex;gap:14px;align-items:baseline;margin-bottom:6px">
+            <span style="font-family:var(--font-display),'Prata',Georgia,serif;font-size:20px;color:rgba(30,27,22,.45)">{{ q.n }}</span>
+            <p style="font-size:19px;line-height:1.5;margin:0;font-weight:600">{{ q.text }}</p>
+          </div>
+          <sc-if value="{{ q.multi }}">
+            <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.45);margin:0 0 14px 34px">Select all that apply</div>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-left:34px">
+            <sc-for list="{{ q.options }}" as="opt" hint-placeholder-count="4">
+              <button type="button" onClick="{{ opt.onClick }}" style="{{ opt.style }}">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ q.showWrong }}">
+            <div style="margin:14px 0 0 34px;font-size:15px;line-height:1.6;color:#8A4A3A">Not quite — revisit this section of the workbook and try again.</div>
+          </sc-if>
+        </div>
+      </sc-for>
+
+      <sc-for list="{{ reflections }}" as="r" hint-placeholder-count="4">
+        <div>
+          <p style="font-size:19px;line-height:1.5;margin:0 0 14px;font-weight:600">{{ r.text }}</p>
+          <textarea rows="4" value="{{ r.value }}" onChange="{{ r.onChange }}" style="width:100%;box-sizing:border-box;padding:14px 16px;font-size:17px;line-height:1.6;font-family:inherit;background:#FFFFFF;border:1px solid rgba(30,27,22,.15);border-radius:4px;color:#1E1B16;resize:vertical"></textarea>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:56px;padding-top:32px;border-top:1px solid rgba(30,27,22,.15);display:flex;flex-direction:column;gap:20px">
+      <sc-if value="{{ quizNotPassed }}">
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" onClick="{{ submitQuiz }}" hint-size="auto,48px">Submit my quiz</x-import>
+          <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="ghost" size="sm" onClick="{{ goHome }}" hint-size="auto,40px">Back to my process</x-import>
+        </div>
+        <sc-if value="{{ showFeedback }}">
+          <p style="font-size:17px;line-height:1.65;margin:0;color:#8A4A3A">{{ feedback }}</p>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ quizDone }}">
+        <div style="background:#D0EAE6;padding:36px">
+          <h2 style="font-family:var(--font-display),'Prata',Georgia,serif;font-weight:400;font-size:30px;line-height:1.2;margin:0 0 16px">Quiz complete</h2>
+          <p style="font-size:17px;line-height:1.65;margin:0 0 24px;max-width:60ch">Your email draft to prayer@blmlss.com has opened with your responses. Tap send so we can schedule your Renouncing Prayer. If nothing opened, use the button below.</p>
+          <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(30,27,22,.5);margin:0 0 20px">{{ quizDateLabel }}</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+            <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" as="a" href="{{ mailtoHref }}" hint-size="auto,48px">Email my responses</x-import>
+            <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="outline" size="sm" onClick="{{ copyResponses }}" hint-size="auto,40px">{{ copyLabel }}</x-import>
+            <x-import component-from-global-scope="BlamelessMinistriesDesignSystem_0fb65e.Button" variant="ghost" size="sm" onClick="{{ goHome }}" hint-size="auto,40px">Back to my process</x-import>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+  </sc-if>
+
+
+  <section data-reveal="" style="background: #C8B8E4; padding: 120px 48px;">
+        <figure style="max-width: 1240px; margin: 0 auto; text-align: center;">
+          <blockquote style="margin: 0 auto; max-width: 34ch; font-family: var(--font-display); font-weight: 400; font-size: 34px; line-height: 1.34; letter-spacing: -.01em; text-wrap: pretty;">“You did not choose me, but I chose you and appointed you that you should go and bear fruit and that your fruit should abide, so that whatever you ask the Father in my name, he may give it to you. These things I command you, so that you will love one another.”</blockquote>
+          <figcaption style="margin-top: 32px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;">John 15:14—17</figcaption>
+        </figure>
+      </section><dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240},&quot;intakeFormUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://drive.google.com/file/d/1PZe6xEV5XZREMexSlQTteaHmi-fwzKLP/view&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;},&quot;livingFreeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Living Free Workbook.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;}}">
+const KEY = 'blmlss-prayer-process-v1';
+
+const CH = [
+  {t:'Deal with the Root', e:'We are spiritual beings living in a spiritual world. Physical problems can have spiritual roots. Kill the spider instead of dusting cobwebs.', tint:'#FFD2B8', b:[
+    ['h','Problems that can have spiritual roots'],
+    ['p','1. Repeated sins. We don\u2019t sin without Satan.'],
+    ['v','I tell you most solemnly that anyone who chooses a life of sin is trapped in a dead-end life and is, in fact, a slave.','John 8:34 (Message)'],
+    ['p','2. Physical illness. What is bound spiritually will bend physically.'],
+    ['v','And behold, there was a woman who had a spirit of infirmity eighteen years, and was bent over and could in no way raise herself up.','Luke 13:11'],
+    ['p','3. Financial famine. Financial problems year after year can have a spiritual cause (2 Samuel 21:1).'],
+    ['p','4. Accident-prone (1 Kings 16:34).'],
+    ['p','5. Anxiety and depression (1 Samuel 16:14; Isaiah 61:3).'],
+    ['h','Dead snakes are dangerous'],
+    ['p','The Bible compares the devil to five animals: a bird (Mt 13:4), a wolf (Jn 10:12), a lion (1Pe 5:8), a dragon (Rev 12:9; 20:2), and a serpent (Gen 3:1).'],
+    ['p','A study on rattlesnakes found that dead rattlesnakes can still strike, bite, and kill. Satan\u2019s defeat gives you a potential of victory, but it does not make you an automatic overcomer. Life is not a playground, it is a battlefield.']
+  ]},
+  {t:'Can Christians Have Demons?', e:'Demon possession is about ownership. Demon oppression is about control.', tint:'#E2DBEF', b:[
+    ['p','There is no basis for ownership in the Greek word daimonizo, which means merely \u201cto subject to demonic influence\u201d (Derek Prince, They Shall Expel Demons).'],
+    ['p','Born again believers can have a demon, but a demon can\u2019t have a believer.'],
+    ['h','Argument 1 \u2014 Deliverance is only for unbelievers'],
+    ['p','Demons have legal rights to the unbeliever. Yet Jesus\u2019 first deliverance happened in the synagogue (Mark 1:23-26), and Satan bound a daughter of Abraham for eighteen years (Luke 13:16).'],
+    ['h','Argument 2 \u2014 The Holy Spirit and a demon can\u2019t live in the same person'],
+    ['p','The Holy Spirit lives in our spirit, but demons can live in our soul.'],
+    ['h','Argument 3 \u2014 Light and darkness can\u2019t live together'],
+    ['v','Do not be unequally yoked together with unbelievers. For what fellowship has righteousness with lawlessness? And what communion has light with darkness?','2 Corinthians 6:14'],
+    ['p','This verse does not say light and darkness cannot coexist. It says they should not exist together.'],
+    ['p','Deliverance is the children\u2019s bread (Mt 15:26). Christians are exhorted not to give place to the devil (Eph 4:27) and not to be entangled again with a yoke of bondage (Gal 5:1).']
+  ]},
+  {t:'Six Demons Mentioned in the Bible', e:'Names of demons reveal the nature of demons.', tint:'#D9E0ED', b:[
+    ['p','Demons are called evil spirits, unclean spirits, familiar spirits, lying spirits, and angels of Satan.'],
+    ['h','1. Spirit of fear (2 Ti 1:7)'],
+    ['p','Unnatural fear that invades your life: fear of circumstances, of death, of driving, of people, of insanity, chronic timidity, paranoia, fear of isolation, of failure, of losing a job, of getting married, of getting sick, horrors and nightmares.'],
+    ['h','2. Spirit of death (Jn 10:10)'],
+    ['p','Constant thoughts of suicide. Behind murder, epilepsy, self-mutilation, abortion, abnormal grief, mourning and sorrow, and convulsions.'],
+    ['h','3. Spirit of lust (Hos 5:4)'],
+    ['p','An evil force behind pornography, adultery, fornication, prostitution, homosexuality. Many times this demon brings sexual dreams.'],
+    ['h','4. Spirit of addiction (Rom 8:15)'],
+    ['p','Addiction to alcohol, drugs, smoking, gambling, and video games. Lighter addictions contribute also: food, television, phone, computer, money, work, sleep, or constant tardiness.'],
+    ['h','5. Spirit of infirmity (Luk 13:11)'],
+    ['p','Often behind allergies, diabetes, arthritis, cancer, constant weakness, mental disorder, organ failure, nerve disorders, chronic rash, and fungal infections.'],
+    ['h','6. Spirit of pride (Pro 16:18)'],
+    ['p','Pride is not just an emotion, it can be a spirit: arrogance, revenge, rebellion, egoism, lust for power, criticism, anger, independence, cruelty, vainglory, and jealousy.'],
+    ['h','7. Spirit of python (Act 16:16)'],
+    ['p','The spirit of divination. Its main assignment is to deceive, operating through the occult: Freemasonry, secret societies, new age, eastern religions, fortune-telling, magic, hypnosis, numerology, charms, ouija boards, horoscopes, and dream catchers.'],
+    ['p','Their goal is to entice, harass, torment, enslave, cause addictions, defile, deceive, and attack the physical body.']
+  ]},
+  {t:'Open Doors to Demons (Part 1)', e:'The devil is like a dog on a leash. He can only bark at Christians but cannot bite them if they stay away from his territory. His territory is sin.', tint:'#A5CEC7', b:[
+    ['p','As God does nothing without faith, Satan does nothing without sin.'],
+    ['h','1. Occult'],
+    ['p','\u201cOccult\u201d literally means hidden from view: astrology, witchcraft, the black arts, fortune telling, black magic, white magic, Ouija boards, spiritism, tarot cards, horoscopes, and talking to the dead. It also includes partaking in false religions.'],
+    ['v','There shall not be found among you anyone who practices witchcraft, or a soothsayer, or one who interprets omens, or a sorcerer, or one who conjures spells, or a medium, or a spiritist, or one who calls up the dead.','Deuteronomy 18:10-11'],
+    ['h','2. Demonic objects'],
+    ['p','Power flows through people, places, animals, and objects. Achan was destroyed for taking the accursed things into his tent (Josh 7:11-25). Books on magic, charms, dream catchers, ouija boards and tarot cards bring demonic influence into a person\u2019s life.'],
+    ['h','3. Bitterness'],
+    ['p','Demons enter through rejection, abuse, trauma, rape, and molestation. Betrayal is what happens to us; bitterness is our response to it. Unforgiveness delivers us to torturers (Matthew 18:34).'],
+    ['v','For I see that you are poisoned by bitterness and bound by iniquity.','Acts 8:23'],
+    ['h','4. Sex outside of marriage'],
+    ['p','Sex is not just a physical act, it is a spiritual matter as well. Condoms can protect from sexual disease, but not from sexual demons (1 Corinthians 6:16).'],
+    ['h','5. Abortion'],
+    ['p','When we commit injustice against others, it also brings a curse (Deut 27:18-19). Abortion is murder, and it brings a curse.']
+  ]},
+  {t:'Open Doors to Demons (Part 2)', e:'Nor give place to the devil. Ephesians 4:27', tint:'#A5CEC7', b:[
+    ['h','6. Inner vows'],
+    ['p','An inner vow is made early in life, with deep emotion, often in response to an experience or desire. \u201cI will never trust anyone.\u201d \u201cI will never be like my father.\u201d \u201cI must become successful.\u201d \u201cI will always look perfect.\u201d'],
+    ['v','It is a snare for a man to devote rashly something as holy, and afterward to reconsider his vows.','Proverbs 20:25'],
+    ['h','7. Spoken curses'],
+    ['p','Those in authority can speak curses over people. Joshua cursed Jericho (Jos 6:26), King David cursed the Mountain of Gilboa, Elisha cursed his servant, and Jesus cursed the fig tree.'],
+    ['h','8. Stealing'],
+    ['p','Robbery, burglary, identity theft, stealing from the office, taking intellectual property, illegally downloading content and shoplifting are acts of sowing which result in reaping curses (Zechariah 5:4). Thievery led to demonic possession in Judas (Jn 13:27).'],
+    ['h','9. Porn'],
+    ['p','Porn is like Delilah. It gives momentary pleasure, but porn\u2019s only allegiance is to do Satan\u2019s bidding.'],
+    ['v','I will set nothing wicked before my eyes.','Psalm 101:3'],
+    ['h','10. Drugs'],
+    ['p','Drugs are directly tied to sorcery in the Bible. The word for sorceries in Revelation 9:21 is pharmakeia, the source of our English word pharmacy.'],
+    ['h','11. Yoga and eastern meditations'],
+    ['p','Eastern meditation empties the mind; Christian meditation fills the mind. Eastern meditation is detachment; Christian meditation is attachment to God.'],
+    ['h','12. Generational curses'],
+    ['p','Generational curses work like generational blessings. We are not responsible for what is passed on, but for what we activate (Proverbs 3:33).']
+  ]},
+  {t:'Demons and Disorders', e:'If prayer solves the problem, then it was probably not schizophrenia. If medicine helps alleviate the problem, it was not demon possession.', tint:'#D9E0ED', b:[
+    ['h','1. Mental illness can be demonic'],
+    ['v','Then they came to Jesus, and saw the one who had been demon-possessed and had the legion, sitting and clothed and in his right mind.','Mark 5:15'],
+    ['h','2. Mental illness can be a result of sin'],
+    ['p','Due to the sin of pride Nebuchadnezzar lost his mind (Daniel 4:33). King Saul had manic episodes after the Spirit of God departed from him (1 Samuel 16:14).'],
+    ['h','3. Mental illness can be a physical illness'],
+    ['p','God uses elements from the earth to assist in healing (Ezk 47:12; 1Ti 5:23; Isa 38:21). Taking medicine is not a weakness of faith. The Church invented the idea of hospitals.'],
+    ['h','Six differences between demons and disorders'],
+    ['p','Dr. Steven Waterhouse, Strength For His People: demons speak in rational dialog, while people with mental illness often speak irrationally. Demons want nothing to do with Christ; people with mental illness are often devoutly religious. Demons give supernatural knowledge. Demons want to be secretive; people with mental illness claim to be demon-possessed. Demonic phenomena are at times scary and spooky. Demons can\u2019t be cured with medicine, and mental illness can\u2019t be fixed with exorcism.']
+  ]},
+  {t:'Basis for Deliverance', e:'There are many reasons for demonic oppression, but only one basis for freedom from them: the cross of Calvary.', tint:'#F9D7DB', b:[
+    ['h','1. The cross is the cure'],
+    ['p','On the cross, Jesus rendered Satan powerless (Col 2:14,15; Gen 3:15). Different sins open the door for the devil, but only the precious blood of Jesus drives him out (Rev 12:11).'],
+    ['h','2. Deliverance is part of sanctification'],
+    ['p','The New Testament word for salvation is Sozo: to save, to deliver, to protect, to preserve, and to rescue from danger. Salvation for the spirit is forgiveness, for the body is healing, and for the soul is deliverance.'],
+    ['v','For by one offering He has perfected forever those who are being sanctified.','Hebrews 10:14'],
+    ['h','3. Salvation is not just an event, it\u2019s a process'],
+    ['p','We are saved (Eph 2:8). We are being saved (2 Cor 2:15; Php 2:12-13). We will be saved (Rom 5:9-10; Rom 13:11).']
+  ]},
+  {t:'Steps to Deliverance', e:'Recognize, repent, renounce, release, resist, replace, renew.', tint:'#DCDFCE', b:[
+    ['h','1. Recognize'],
+    ['p','Recognize that there is demonic activity or an open door (John 8:31-33).'],
+    ['h','2. Repent'],
+    ['p','Confess your faith in Christ, confess any known sins, and forgive anyone who sinned against you (Leviticus 26:39-40).'],
+    ['h','3. Renounce'],
+    ['p','Renounce all contact with the devil and the occult, and throw away any demonically dedicated items (2 Corinthians 4:2).'],
+    ['h','4. Release'],
+    ['p','Release yourself in the name of Jesus (Proverbs 6:5).'],
+    ['h','5. Resist'],
+    ['v','Therefore submit to God. Resist the devil and he will flee from you.','James 4:7'],
+    ['h','6. Replace'],
+    ['p','Replace whatever things the Lord delivered you from with the things of God (Romans 6:12).'],
+    ['h','7. Renew'],
+    ['v','And do not be conformed to this world, but be transformed by the renewing of your mind.','Romans 12:2']
+  ]},
+  {t:'How to be Delivered from Porn', e:'Private victories prepare us for our public triumphs.', tint:'#EEE6DB', b:[
+    ['h','1. Desperation'],
+    ['p','\u201cHoly Spirit belongs to the thirsty, deliverance belongs to the desperate.\u201d Derek Prince'],
+    ['h','2. Deliverance'],
+    ['v','Most assuredly, I say to you, whoever commits sin is a slave of sin.','John 8:34'],
+    ['h','3. Devotion'],
+    ['v','There is no fear in love; but perfect love casts out fear, because fear involves torment.','1 John 4:18'],
+    ['h','4. Discipline'],
+    ['p','If your right eye causes you to sin, pluck it out and cast it from you (Matthew 5:29-30).'],
+    ['h','5. Dominion'],
+    ['p','For a righteous man may fall seven times and rise again (Proverbs 24:16).'],
+    ['h','Three enemies'],
+    ['p','We are fighting three enemies simultaneously: the devil (invisible enemy), the flesh (inward enemy), and the world (visible enemy). The spiritual enemy is overcome by repentance, renouncing, resistance and deliverance. The flesh is overcome by crucifixion and self-denial. The world is overcome by fleeing and removing ourselves from the places and people that cause us to sin.']
+  ]},
+  {t:'Overcoming Night Terrors', e:'Go to sleep on the Rock of Ages instead of the lap of Delilah.', tint:'#ADC1C6', b:[
+    ['h','1. You can\u2019t get a demon through a dream'],
+    ['p','God showed up to kings like Abimelech, Pharaoh and Nebuchadnezzar, but it didn\u2019t mean they got in right standing with God via a dream.'],
+    ['h','2. Constant bad dreams can be a sign that you need deliverance'],
+    ['p','Dreams of always counting money. A different wife. Running from someone. Falling into a pit. Eating with someone who is dead. Hair cut in a dream. Carrying huge baggage. Wearing masks. Being shot.'],
+    ['h','3. Where you lay your head matters'],
+    ['v','So he came to a certain place and stayed there all night. And he took one of the stones of that place and put it at his head, and he lay down in that place to sleep. Then he dreamed, and behold, a ladder was set up on the earth, and its top reached to heaven.','Genesis 28:11-12'],
+    ['h','4. Pull it out by your confession'],
+    ['v','Behold, I give you the authority to trample on serpents and scorpions, and over all the power of the enemy, and nothing shall by any means hurt you.','Luke 10:19'],
+    ['p','The enemy loves to attack us when we sleep. His goal is to cut away our peace and power.']
+  ]}
+];
+
+const Q = [
+  {t:'As God does nothing without faith, Satan does nothing without:', o:['Fear','Ignorance','Sin','Weakness'], a:['Sin']},
+  {t:'True or False: Born again believers can have a demon.', o:['True','False'], a:['True']},
+  {t:'Which of the following was listed as a possible \u201cOpen Door\u201d to demonic oppression?', o:['Bitterness','Occult involvement','Unforgiveness','Sexual sin','Pride'], a:['Bitterness','Occult involvement','Unforgiveness','Sexual sin','Pride'], m:true},
+  {t:'True or False: Anxiety and depression can have a spiritual root.', o:['True','False'], a:['True']},
+  {t:'According to the course, freedom is maintained through:', o:['Renewing the mind','Replacing old habits with God\u2019s truth','Resisting the devil','Walking in repentance'], a:['Renewing the mind','Replacing old habits with God\u2019s truth','Resisting the devil','Walking in repentance'], m:true},
+  {t:'The course teaches that deliverance is:', o:['A replacement for discipleship','Part of sanctification','Only for unbelievers','Mostly symbolic'], a:['Part of sanctification']},
+  {t:'According to the material, what are the three enemies believers face?', o:['Flesh, demons, religion','Fear, pride, lust','Sin, death, demons','World, flesh, devil'], a:['World, flesh, devil']},
+  {t:'True or False: The statements \u201cI will never\u201d or \u201cI will always\u201d are examples of inner vows.', o:['True','False'], a:['True']},
+  {t:'According to the course, what is one purpose of repentance?', o:['To earn salvation','To close doors to the enemy','To impress God','To avoid responsibility'], a:['To close doors to the enemy']},
+  {t:'True or False: The course teaches that renewing the mind is important after deliverance.', o:['True','False'], a:['True']},
+  {t:'What does the course identify as part of the \u201cSteps to Deliverance\u201d?', o:['Renouncing occult involvement','Forgiving others','Confessing sin','Resisting the devil'], a:['Renouncing occult involvement','Forgiving others','Confessing sin','Resisting the devil'], m:true},
+  {t:'According to the teaching, demons primarily seek to:', o:['Strengthen believers','Bring people closer to God','Entice, harass, torment, enslave, cause addictions, defile, deceive, and attack the physical body.','Punish only unbelievers'], a:['Entice, harass, torment, enslave, cause addictions, defile, deceive, and attack the physical body.']}
+];
+
+const R = [
+  'What section of the course impacted you the most and why?',
+  'After completing this course, what is your understanding of how freedom is maintained after deliverance?',
+  'What questions, hesitations, or thoughts about deliverance do you still have after completing the e-course and quiz?',
+  'Do you have any questions about the BLMLSS prayer process or what to expect moving forward?'
+];
+
+const LEADS = [
+  {name:'Nick Gravino', email:'nick@blmlss.com'},
+  {name:'Emily Gravino', email:'emily@blmlss.com'},
+  {name:'Taylor Allen', email:'taylor@blmlss.com'},
+  {name:'Cameryn Donald', email:'cameryn@camerynrogers.com'},
+  {name:'Stella Hayes', email:'stellajoquarta@gmail.com'},
+  {name:'Kelsey Meins', email:'meins.kelsey@gmail.com'},
+  {name:'Olivia Crum', email:'ocrum94@gmail.com'}
+];
+
+const BLANK = {intro:false, intake:false, lead:'nick@blmlss.com', chapters:[], quiz:false, renouncing:false, releasing:false, name:'', email:'', answers:{}, reflections:{}};
+
+class Component extends DCLogic {
+  state = {view:'home', p:Object.assign({}, BLANK), wrong:[], feedback:'', showFeedback:false, copied:false, unlocked:false, gateInput:'', gateError:false};
+
+  componentDidMount(){
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) this.setState({p: Object.assign({}, BLANK, JSON.parse(raw))});
+    } catch(e){}
+    try { if (localStorage.getItem('blmlss-gate-v1') === 'ok') this.setState({unlocked:true}); } catch(e){}
+  }
+
+  save(patch){
+    const p = Object.assign({}, this.state.p, patch);
+    this.setState({p});
+    try { localStorage.setItem(KEY, JSON.stringify(p)); } catch(e){}
+  }
+
+  toggleAnswer(qi, label, multi){
+    const answers = Object.assign({}, this.state.p.answers);
+    if (multi) {
+      const cur = Array.isArray(answers[qi]) ? answers[qi].slice() : [];
+      const i = cur.indexOf(label);
+      if (i >= 0) cur.splice(i,1); else cur.push(label);
+      answers[qi] = cur;
+    } else {
+      answers[qi] = [label];
+    }
+    this.save({answers});
+  }
+
+  submit(){
+    const p = this.state.p;
+    const wrong = [];
+    Q.forEach((q,i) => {
+      const given = (p.answers[i]||[]).slice().sort().join('|');
+      const want = q.a.slice().sort().join('|');
+      if (given !== want) wrong.push(i);
+    });
+    const missingText = R.some((_,i) => !(p.reflections[i]||'').trim());
+    const missingId = !p.name.trim() || !p.email.trim();
+    if (missingId) { this.setState({wrong, feedback:'Please add your full name and email before submitting.', showFeedback:true}); return; }
+    if (wrong.length) { this.setState({wrong, feedback:'A few answers need another look. The questions marked below are not yet correct.', showFeedback:true}); return; }
+    if (missingText) { this.setState({wrong, feedback:'Please answer all four written reflections before submitting.', showFeedback:true}); return; }
+    this.setState({wrong:[], feedback:'', showFeedback:false});
+    const quizDate = new Date().toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
+    this.save({quiz:true, quizDate});
+    // static hosting cannot send mail itself — open the pre-filled draft once, on completion
+    if (!p.quiz) {
+      setTimeout(() => { try { window.location.href = this.mailto(); } catch(e){} }, 600);
+    }
+  }
+
+  mailto(){
+    const p = this.state.p;
+    return 'mailto:prayer@blmlss.com?subject='
+      + encodeURIComponent('E-Course quiz complete \u2014 ' + (p.name || 'BLMLSS') + (p.quizDate ? ' \u2014 ' + p.quizDate : ''))
+      + '&body=' + encodeURIComponent(this.summary());
+  }
+
+  summary(){
+    const p = this.state.p;
+    const lines = ['BLMLSS Deliverance E-Course Quiz', 'Name: '+p.name, 'Email: '+p.email,
+      'Completed: '+(this.state.p.quizDate || new Date().toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})), ''];
+    Q.forEach((q,i) => { lines.push((i+1)+'. '+q.t); lines.push('   '+(p.answers[i]||[]).join(', ')); });
+    lines.push('');
+    R.forEach((r,i) => { lines.push(r); lines.push((p.reflections[i]||'').trim()); lines.push(''); });
+    return lines.join('\n');
+  }
+
+  preview(){
+    // viewing aid only: unlocks every step when the URL carries ?preview=1
+    try { return /[?&]preview=1/.test(window.location.search); } catch(e){ return false; }
+  }
+
+  tryUnlock(){
+    if (this.state.gateInput.trim().toLowerCase() === 'fireofgod') {
+      this.setState({unlocked:true, gateError:false, gateInput:''});
+      try { localStorage.setItem('blmlss-gate-v1','ok'); } catch(e){}
+    } else {
+      this.setState({gateError:true});
+    }
+  }
+
+  renderVals(){
+    const p = this.state.p;
+    const gate = {
+      locked: !this.state.unlocked && !this.preview(),
+      gateStyle: (this.state.unlocked || this.preview()) ? '' : 'filter:blur(7px);pointer-events:none;user-select:none',
+      gateInput: this.state.gateInput,
+      gateError: this.state.gateError,
+      setGate: (e) => this.setState({gateInput: e.target.value, gateError:false}),
+      gateKey: (e) => { if (e.key === 'Enter') this.tryUnlock(); },
+      submitGate: () => this.tryUnlock(),
+    };
+    const readCount = p.chapters.length;
+    const allRead = readCount >= CH.length;
+    const pv = this.preview();
+    const s1 = pv || p.intro;
+    const s2 = pv || (p.intake && allRead && p.quiz);
+    const s3 = pv || (s2 && p.renouncing);
+    const s4 = pv || (s3 && p.releasing);
+    const done = [s1, s2, s3, s4].filter(Boolean).length;
+
+    const chapters = CH.map((c,i) => {
+      const read = p.chapters.indexOf(i) >= 0;
+      return {
+        n: i+1, anchor: 'section-'+(i+1), title: c.t, epigraph: c.e, tint: c.tint,
+        read, todo: !read,
+        mark: () => {
+          if (p.chapters.indexOf(i) >= 0) return;
+          this.save({chapters: p.chapters.concat([i])});
+        },
+        blocks: c.b.map(b => ({isH: b[0]==='h', isP: b[0]==='p', isV: b[0]==='v', text: b[1], ref: b[2]||''}))
+      };
+    });
+
+    const optBase = 'display:block;width:100%;text-align:left;font:inherit;font-size:17px;line-height:1.5;padding:14px 18px;border-radius:4px;cursor:pointer;transition:background 160ms,border-color 160ms;';
+    const questions = Q.map((q,i) => {
+      const sel = p.answers[i] || [];
+      return {
+        n: i+1, text: q.t, multi: !!q.m,
+        showWrong: this.state.wrong.indexOf(i) >= 0,
+        options: q.o.map(label => {
+          const on = sel.indexOf(label) >= 0;
+          return {
+            label,
+            style: optBase + (on
+              ? 'background:#1E1B16;color:#F7F3ED;border:1px solid #1E1B16;'
+              : 'background:#FFFFFF;color:#1E1B16;border:1px solid rgba(30,27,22,.15);'),
+            onClick: () => this.toggleAnswer(i, label, !!q.m)
+          };
+        })
+      };
+    });
+
+    const reflections = R.map((text,i) => ({
+      text,
+      value: p.reflections[i] || '',
+      onChange: (e) => {
+        const refl = Object.assign({}, p.reflections);
+        refl[i] = e.target.value;
+        this.save({reflections: refl});
+      }
+    }));
+
+    return Object.assign({}, gate, {
+      isHome: this.state.view === 'home',
+      isWorkbook: this.state.view === 'workbook',
+      isQuiz: this.state.view === 'quiz',
+      homeHref: '#',
+      goHome: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({view:'home'}); window.scrollTo(0,0); },
+      openWorkbook: () => { this.setState({view:'workbook'}); window.scrollTo(0,0); },
+      openQuiz: () => { this.setState({view:'quiz'}); window.scrollTo(0,0); },
+      resetAll: () => { try{localStorage.removeItem(KEY);}catch(e){} this.setState({p:Object.assign({},BLANK,{chapters:[],answers:{},reflections:{}}), view:'home', wrong:[], showFeedback:false}); },
+
+      progressLabel: done >= 4 ? 'Step 5 of 5 \u00b7 Living Free' : ('Step ' + (done + 1) + ' of 5'),
+      progressPct: (Math.min(done, 4) / 4 * 100) + '%',
+
+      videoIdle: !this.state.videoPlaying,
+      videoPlaying: !!this.state.videoPlaying,
+      playVideo: () => this.setState({videoPlaying: true}),
+      s1Done: s1, s1Open: !s1,
+      markIntro: () => this.save({intro:true}),
+
+      s2Locked: !s1, s2Open: s1, s2Done: s2, s2Opacity: s1 ? 1 : 0.55,
+      intakeFormUrl: this.props.intakeFormUrl || 'https://drive.google.com/file/d/1PZe6xEV5XZREMexSlQTteaHmi-fwzKLP/view',
+      leads: LEADS,
+      leadValue: p.lead || LEADS[0].email,
+      leadMailto: 'mailto:' + (p.lead || LEADS[0].email) + '?subject=' + encodeURIComponent('BLAMELESS Consent & Intake Form'),
+      onLeadChange: (e) => this.save({lead: e.target.value}),
+      intakeDone: p.intake, intakeTodo: !p.intake,
+      markIntake: () => this.save({intake:true}),
+      workbookCta: allRead ? 'Review the workbook' : (readCount ? 'Continue reading' : 'Open the workbook'),
+      chaptersLabel: readCount + ' of 10 sections read',
+      quizLocked: !allRead, quizOpen: allRead, quizDone: p.quiz, quizNotPassed: !p.quiz,
+      quizCta: p.quiz ? 'Review my quiz' : 'Take the quiz',
+
+      s3Locked: !s2, s3Open: s2, s3Done: s3, s3Opacity: s2 ? 1 : 0.55,
+      renouncingTodo: !p.renouncing,
+      markRenouncing: () => this.save({renouncing:true}),
+
+      s4Locked: !s3, s4Open: s3, s4Done: s4, s4Opacity: s3 ? 1 : 0.55,
+      releasingTodo: !p.releasing,
+      s5Locked: !s4, s5Open: s4, s5Opacity: s4 ? 1 : 0.55,
+      livingFreeUrl: this.props.livingFreeUrl || 'Living%20Free%20Workbook.dc.html',
+      markReleasing: () => this.save({releasing:true}),
+
+      chapters,
+      chapterChips: CH.map((c,i) => ({
+        n: i+1, href: '#section-'+(i+1),
+        bg: p.chapters.indexOf(i) >= 0 ? '#D0EAE6' : 'transparent'
+      })),
+
+      questions, reflections,
+      nameValue: p.name, emailValue: p.email,
+      onName: (e) => this.save({name: e.target.value}),
+      onEmail: (e) => this.save({email: e.target.value}),
+      submitQuiz: () => this.submit(),
+      feedback: this.state.feedback,
+      showFeedback: this.state.showFeedback,
+      mailtoHref: this.mailto(),
+      quizDateLabel: p.quizDate ? 'Completed ' + p.quizDate : '',
+      copyLabel: this.state.copied ? 'Copied' : 'Copy my responses',
+      copyResponses: () => {
+        try { navigator.clipboard.writeText(this.summary()); } catch(e){}
+        this.setState({copied:true});
+        setTimeout(() => this.setState({copied:false}), 2000);
+      }
+    });
+  }
+}
+</script>
+</body>
+</html>

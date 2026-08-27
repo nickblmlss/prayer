@@ -1,0 +1,148 @@
+/* BLMLSS Church — responsive layer.
+   Pages are inline-styled, so these rules target the inline style strings
+   directly and only take effect below the desktop breakpoints. */
+
+img, svg, video { max-width: 100%; }
+
+/* ---------- Tablet: 1024px and below ---------- */
+@media (max-width: 1024px) {
+  [style*="grid-template-columns: 1.05fr 1fr"],
+  [style*="grid-template-columns: 1.05fr 0.95fr"],
+  [style*="grid-template-columns: 1fr 1.2fr"],
+  [style*="grid-template-columns: 1.35fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px 32px !important;
+  }
+
+  /* Team page portraits stop pinning once stacked (header keeps its sticky) */
+  [style*="position: sticky; top: 96px"] {
+    position: static !important;
+  }
+
+  [style*="font-size: 116px"] { font-size: 76px !important; }
+  [style*="font-size: 96px"]  { font-size: 64px !important; }
+  [style*="font-size: 72px"]  { font-size: 52px !important; }
+  [style*="font-size: 56px"]  { font-size: 42px !important; }
+  [style*="font-size: 52px"]  { font-size: 40px !important; }
+
+  [style*="padding: 140px"] { padding-top: 96px !important; padding-bottom: 96px !important; }
+  [style*="padding: 120px"] { padding-top: 88px !important; padding-bottom: 88px !important; }
+  [style*="padding: 112px"] { padding-top: 80px !important; padding-bottom: 80px !important; }
+  [style*="padding: 104px"] { padding-top: 80px !important; padding-bottom: 80px !important; }
+  [style*="padding: 96px"]  { padding-top: 72px !important; padding-bottom: 72px !important; }
+
+  /* Hero: 100vh is far too tall once the viewport is portrait */
+  [style*="min-height: 700px"] {
+    height: 62vh !important;
+    min-height: 460px !important;
+    max-height: 680px !important;
+  }
+  [style*="padding-bottom: 40px"] { padding-bottom: 20px !important; }
+}
+
+/* Parallax photo stack: absolute layers only make sense in the two-column layout.
+   On narrow screens the three-photo stack reads as clutter, so it collapses to
+   the single gathering photo. Keyed to the data attribute so visual-editor
+   size tweaks can't break it. */
+@media (max-width: 1024px) {
+  [data-parallax-stack] {
+    height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+  [data-parallax-stack] > img {
+    display: none !important;
+  }
+  [data-parallax-stack] > img:first-of-type {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 300px !important;
+    transform: none !important;
+  }
+}
+
+/* ---------- Mobile: 700px and below ---------- */
+@media (max-width: 700px) {
+  section, footer, header > div:not([data-nav="panel"]) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Form field pairs, footer link columns, paired CTAs */
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* Numbered belief entries */
+  [style*="grid-template-columns: 56px 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  [style*="font-size: 116px"] { font-size: 52px !important; }
+  [style*="font-size: 96px"]  { font-size: 44px !important; }
+  [style*="font-size: 72px"]  { font-size: 38px !important; }
+  [style*="font-size: 56px"]  { font-size: 32px !important; }
+  [style*="font-size: 52px"]  { font-size: 30px !important; }
+
+  [style*="padding: 140px"] { padding-top: 72px !important; padding-bottom: 72px !important; }
+  [style*="padding: 120px"] { padding-top: 64px !important; padding-bottom: 64px !important; }
+  [style*="padding: 112px"] { padding-top: 60px !important; padding-bottom: 60px !important; }
+  [style*="padding: 104px"] { padding-top: 60px !important; padding-bottom: 60px !important; }
+  [style*="padding: 96px"]  { padding-top: 56px !important; padding-bottom: 56px !important; }
+
+  /* Full-height heroes are too tall on a phone */
+  [style*="min-height: 700px"] {
+    height: 66vh !important;
+    min-height: 380px !important;
+    max-height: none !important;
+  }
+  [style*="padding-bottom: 40px"] { padding-bottom: 4px !important; }
+
+  /* Any hard-coded pixel width would force a horizontal scrollbar */
+  [style*="width: 641px"],
+  [style*="width: 640px"] {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* Prose measures */
+  [style*="max-width: 900px"],
+  [style*="max-width: 760px"],
+  [style*="max-width: 640px"],
+  [style*="max-width: 620px"] {
+    max-width: 100% !important;
+  }
+
+  /* Tap targets */
+  a[style*="padding: 16px 28px"],
+  button[style*="padding: 16px 28px"] {
+    padding: 15px 22px !important;
+  }
+}
+
+/* ---------- Header: mobile nav ---------- */
+[data-nav="burger"] { display: none; }
+
+@media (max-width: 860px) {
+  [data-nav="desktop"] { display: none !important; }
+  [data-nav="burger"] { display: flex !important; }
+}
+
+@media (min-width: 861px) {
+  [data-nav="panel"] { display: none !important; }
+}

@@ -1,0 +1,1 @@
+{"requireSequence":{"editor":"boolean","default":true,"tsType":"boolean","section":"Experience"},"showDayMap":{"editor":"boolean","default":true,"tsType":"boolean","section":"Experience"},"prayerUrl":{"editor":"text","default":"https://blmlss.com/prayer","tsType":"string","section":"Experience"}}
