@@ -66,6 +66,8 @@
 
   function prime(el, i) {
     if (seen.has(el)) return;
+    /* parallax layers own their own transform — never fade-and-rise them */
+    if (el.hasAttribute('data-parallax')) return;
     seen.add(el);
 
     // Already on screen at first paint: animate in immediately with a light stagger.

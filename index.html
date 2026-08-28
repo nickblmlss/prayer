@@ -45,14 +45,21 @@
   </section>
 
   <div style="background: #FFFFFF; border-bottom: 1px solid var(--border-hairline);">
-    <div data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-      <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(30,27,22,.45);">{{ progressLabel }}</span>
-      <div style="flex: 1 1 220px; height: 2px; background: rgba(30,27,22,.12); position: relative; min-width: 160px;">
-        <div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{ progressPct }}; background: #1E1B16;"></div>
+    <div data-r="bar" data-reveal="" style="max-width: 1240px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 28px; min-width: 0;">
+        <nav style="display: flex; align-items: center; gap: 20px;">
+          <span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 3px;">Prayer Process</span>
+          <span style="color: rgba(30,27,22,.25);">|</span>
+          <a href="https://livingfree.blmlss.com/" style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(30,27,22,.45); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 3px;" style-hover="color: var(--ink);">Living Free Workbook</a>
+        </nav>
       </div>
-      <sc-if value="{{ s5Open }}">
-        <a href="{{ livingFreeUrl }}" target="_blank" rel="noopener" style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink-15); padding: 9px 18px;" style-hover="background: var(--cream);">Living Free workbook</a>
-      </sc-if>
+      <div style="flex: 1 1 120px;"></div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-family: var(--font-body); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-45); white-space: nowrap;">{{ progressLabel }}</span>
+        <div style="width: 96px; height: 4px; background: var(--ink-15);">
+          <div style="height: 4px; background: var(--apricot); width: {{ progressPct }};"></div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -6,7 +6,11 @@
 (function () {
   /* guard per DOCUMENT, not per realm: the preview keeps one JS realm alive
      across page switches, so a window-level flag would skip every later page. */
-  if (document.__blmlssMotion) return;
+  /* versioned guard: the preview can keep one document alive across reloads,
+     so a plain boolean would make every later revision of this file no-op */
+  var VERSION = 4;
+  if (document.__blmlssMotionV >= VERSION) return;
+  document.__blmlssMotionV = VERSION;
   document.__blmlssMotion = true;
   window.__blmlssMotion = true;
 
@@ -66,7 +70,7 @@
   }
 
   function arm(el) {
-    if (armed.has(el) || revealed.has(el)) return;
+    if (armed.has(el) || revealed.has(el) || isLayer.has(el) || el.hasAttribute('data-parallax')) return;
     armed.add(el);
     el.__blmlssState = { shown: false };
     armState(el);
@@ -88,13 +92,20 @@
   }
 
   var layers = [];
+  var claimedP = new WeakSet();
+  var isLayer = new WeakSet();
   function claimParallax(img) {
-    if (claimed.has(img)) return;
-    claimed.add(img);
+    if (claimedP.has(img)) return;
+    claimedP.add(img);
+    isLayer.add(img);
     var host = img.parentElement;
     if (!host) return;
     var t = getComputedStyle(img).transform;
-    layers.push({ img: img, host: host, base: t && t !== 'none' ? t : '', last: null });
+    var d = parseFloat(img.getAttribute('data-parallax'));
+    if (!(d > 0)) d = DEPTH;
+    /* the image must overhang by half the travel at each edge */
+    var over = Math.max(14, Math.round(d * 100 / 2 + 2));
+    layers.push({ img: img, host: host, base: t && t !== 'none' ? t : '', last: null, depth: d, h: (100 + over * 2) + '%', top: '-' + over + '%' });
   }
 
   function frame() {
@@ -109,9 +120,9 @@
     for (var i = 0; i < layers.length; i++) {
       var l = layers[i];
       var s = l.img.style;
-      if (s.getPropertyValue('height') !== '114%') {
-        s.setProperty('height', '114%', 'important');
-        s.setProperty('top', '-7%', 'important');
+      if (s.getPropertyValue('height') !== l.h) {
+        s.setProperty('height', l.h, 'important');
+        s.setProperty('top', l.top, 'important');
         s.setProperty('bottom', 'auto', 'important');
         s.setProperty('will-change', 'transform');
       }
@@ -120,14 +131,16 @@
       if (span <= 0) continue;
       var p = (vh - r.top) / span;
       p = p < 0 ? 0 : p > 1 ? 1 : p;
-      var v = 'translate3d(0,' + ((p - 0.5) * r.height * DEPTH).toFixed(2) + 'px,0) ' + l.base;
+      var v = 'translate3d(0,' + ((p - 0.5) * r.height * l.depth).toFixed(2) + 'px,0) ' + l.base;
       if (v !== l.last || s.transform !== v) {
         l.last = v;
         s.setProperty('transform', v, 'important');
       }
     }
     /* keep ticking only while pre-reveal state still needs re-applying */
-    if (pending.length) schedule();
+    /* keep ticking whenever a parallax layer exists: the page's scroller is
+       not always window/document, so scroll events alone are not reliable */
+    if (pending.length || layers.length) schedule();
   }
 
   var rafId = null;
@@ -137,17 +150,26 @@
 
   function scan(root) {
     if (!root || root.nodeType !== 1) return;
-    if (root.matches('[data-reveal]')) claim(root);
-    root.querySelectorAll('[data-reveal]').forEach(claim);
     if (root.matches('img[data-parallax]')) claimParallax(root);
     root.querySelectorAll('img[data-parallax]').forEach(claimParallax);
+    if (root.matches('[data-reveal]')) claim(root);
+    root.querySelectorAll('[data-reveal]').forEach(claim);
   }
 
   function start() {
-    scan(document.body);
+    scan(document.documentElement);
+    /* observe the root, not body: the DC runtime can replace document.body,
+       which would silently kill an observer bound to the old node */
     new MutationObserver(function (muts) {
-      muts.forEach(function (m) { m.addedNodes.forEach(scan); });
-    }).observe(document.body, { childList: true, subtree: true });
+      for (var i = 0; i < muts.length; i++) muts[i].addedNodes.forEach(scan);
+      scan(document.documentElement);
+    }).observe(document.documentElement, { childList: true, subtree: true });
+    /* belt and braces: re-scan for a few seconds in case the mount races us */
+    var tries = 0;
+    var poll = setInterval(function () {
+      scan(document.documentElement);
+      if (++tries > 40) clearInterval(poll);
+    }, 150);
     /* parallax follows scroll instead of a free-running loop; capture phase so
        it works regardless of which ancestor is the scroller */
     document.addEventListener('scroll', schedule, { capture: true, passive: true });
